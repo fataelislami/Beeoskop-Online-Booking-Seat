@@ -2,7 +2,7 @@
     <ul id="sidebarnav">
         <li class="nav-small-cap">Menu</li>
         <li>
-            <a class="waves-effect waves-dark" href="<?php echo base_url()?>admin"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard </span></a>
+            <a class="waves-effect waves-dark" href="<?php echo base_url()?>admin"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard TEST </span></a>
         </li>
         <!-- <li>
             <a class="waves-effect waves-dark" href="<?php echo base_url()?>admin/users"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Member </span></a>
