@@ -10,8 +10,8 @@
                 <div class="d-flex flex-row">
                     <div class="round round-lg align-self-center round-info"><i class="ti-wallet"></i></div>
                     <div class="m-l-10 align-self-center">
-                        <h3 class="m-b-0 font-light">1900</h3>
-                        <h5 class="text-muted m-b-0">Data Wisata</h5></div>
+                        <h3 class="m-b-0 font-light">Rp.900.000</h3>
+                        <h5 class="text-muted m-b-0">Total Penjualan Tiket</h5></div>
                 </div>
             </div>
         </div>
@@ -24,8 +24,8 @@
                 <div class="d-flex flex-row">
                     <div class="round round-lg align-self-center round-warning"><i class="mdi mdi-cellphone-link"></i></div>
                     <div class="m-l-10 align-self-center">
-                        <h3 class="m-b-0 font-lgiht">120.512</h3>
-                        <h5 class="text-muted m-b-0">Total Pengguna</h5></div>
+                        <h3 class="m-b-0 font-lgiht">300</h3>
+                        <h5 class="text-muted m-b-0">Total Film</h5></div>
                 </div>
             </div>
         </div>
@@ -39,7 +39,7 @@
                     <div class="round round-lg align-self-center round-primary"><i class="mdi mdi-account-multiple"></i></div>
                     <div class="m-l-10 align-self-center">
                         <h3 class="m-b-0 font-lgiht">24</h3>
-                        <h5 class="text-muted m-b-0">Pemilik</h5></div>
+                        <h5 class="text-muted m-b-0">Sutradara</h5></div>
                 </div>
             </div>
         </div>
@@ -53,7 +53,7 @@
                     <div class="round round-lg align-self-center round-danger"><i class="mdi mdi-bullseye"></i></div>
                     <div class="m-l-10 align-self-center">
                         <h3 class="m-b-0 font-lgiht">12</h3>
-                        <h5 class="text-muted m-b-0">Dinas Wisata</h5></div>
+                        <h5 class="text-muted m-b-0">Tayang Minggu Ini</h5></div>
                 </div>
             </div>
         </div>
@@ -195,7 +195,7 @@
                     <a class="btn-minimize" data-action="expand"><i class="mdi mdi-arrow-expand"></i></a>
                     <a class="btn-close" data-action="close"><i class="ti-close"></i></a>
                 </div>
-                <h4 class="card-title m-b-0">Pemilik Wisata</h4>
+                <h4 class="card-title m-b-0">Sutradara Terbaik</h4>
             </div>
             <div class="card-body b-t collapse show">
                 <table class="table v-middle no-border">

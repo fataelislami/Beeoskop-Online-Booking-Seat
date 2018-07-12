@@ -2,12 +2,12 @@
   <div class="col-12">
     <div class="card">
         <div class="card-body">
-            <h4 class="card-title">Contoh Form</h4>
+            <h4 class="card-title">Tambah Film</h4>
             <form class="form-material m-t-40" method="post" action="<?php echo base_url() ?>admin/film/create_action">
                <!-- //START -->
                 <div class="form-group">
                         <label>Id Film</label>
-                        <input type="text" name="id_film" class="form-control" placeholder="id_film" value="JRC">
+                        <input type="text" name="id_film" class="form-control" placeholder="id_film">
                 </div>
                 <div class="form-group">
                         <label>Judul Film</label>

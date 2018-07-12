@@ -10,7 +10,7 @@
     <meta name="author" content="">
     <!-- Favicon icon -->
     <link rel="icon" type="image/png" sizes="16x16" href="<?php echo base_url()?>assets/images/favicon.png">
-    <title>WISATA CUY!</title>
+    <title>BIOSKOP ADMIN</title>
     <!-- Bootstrap Core CSS -->
     <link href="<?php echo base_url()?>assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet">
     <!-- Custom CSS -->
@@ -266,7 +266,7 @@
             <!-- footer -->
             <!-- ============================================================== -->
             <footer class="footer">
-                © 2018 ATOL Dev Team
+                © 2018 SI Dev Team
             </footer>
             <!-- ============================================================== -->
             <!-- End footer -->

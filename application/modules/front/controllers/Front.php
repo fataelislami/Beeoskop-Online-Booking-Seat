@@ -7,12 +7,14 @@ class Front extends MY_Controller{
   {
     parent::__construct();
     //Codeigniter : Write Less Do More
+    $this->load->model(array('Film_model'));
   }
 
   function index()
   {
-    $data = array('name' => 'BIOSKOP FRONT', );
-    $this->load->view('welcome_message',$data);
+    $datafilm=$this->Film_model->get_all();//panggil ke modell
+    $data = array('datafilm' => $datafilm, );
+    $this->load->view('Fullpage',$data);
   }
 
   function profile(){
