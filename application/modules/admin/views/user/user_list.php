@@ -4,11 +4,11 @@
             <div class="card-body">
               <div class="row">
                   <div class="col-md-6">
-                      <h4 class="card-title">Data Jam Tayang</h4>
+                      <h4 class="card-title">Data User</h4>
                       <h6 class="card-subtitle">Export data to Copy, CSV, Excel, PDF & Print</h6>
                   </div>
                   <div class="col-md-6 text-right">
-                      <?php echo anchor(site_url('admin/jam_tayang/tambah'), '+ Tambah Jam Tayang', 'class="btn btn-primary"'); ?>
+                      <?php echo anchor(site_url($module.'/user/create'), '+ Tambah Data', 'class="btn btn-primary"'); ?>
       	    </div>
               </div>
 
@@ -17,22 +17,23 @@
                     <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                             <tr>
-                                <th>id</th>
-                                <th>Jam Tayang</th>
-                                <th>Action</th>
-
+                                <?php foreach ($datafield as $d): ?>
+                                  <th><?php echo str_replace("_"," ",$d) ?></th>
+                                <?php endforeach; ?>
+                                <th>aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                          <?php foreach ($datajam as $d): ?>
+                          <?php foreach ($datauser as $d): ?>
                             <tr>
-                                <td><?php echo $d->id_jam_tayang ?></td>
-                                <td><?php echo $d->jam_tayang ?></td>
+                              <?php foreach ($datafield as $df): ?>
+                                <td><?php echo $d->$df ?></td>
+                              <?php endforeach; ?>
                                 <td>
-                                    <a href="#">
+                                <a href="<?php echo base_url().$module?>/user/edit/<?php echo $d->username ?>">
                                         <button class="btn btn-success waves-effect waves-light m-r-10">Edit</button>
                                     </a>
-                                    <a href="#">
+                                    <a href="<?php echo base_url().$module?>/user/delete/<?php echo $d->username ?>">
                                       <button class="btn btn-danger waves-effect waves-light m-r-10" >Delete</button>
                                     </a>
                                 </td>

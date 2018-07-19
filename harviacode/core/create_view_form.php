@@ -9,7 +9,7 @@ $string = "<div class=\"row\">
 
 foreach ($non_pk as $row) {
 
-    $string .= "\n\t<div class=\"form-group\">
+    $string .= "\n\t  <div class=\"form-group\">
             <label>".$row["column_name"]."</label>
             <input type=\"text\" name=\"".$row["column_name"]."\" class=\"form-control\" placeholder=\"\">
     </div>";

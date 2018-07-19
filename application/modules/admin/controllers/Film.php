@@ -26,6 +26,7 @@ class Film extends MY_Controller{
       'css'=>'admin/film/assets/css',//Ini buat kirim css dari page nya  {DIKIRIM KE TEMPLATE}
       'script'=>'admin/film/assets/script',//ini buat javascript apa aja yang di load di page {DIKIRIM KE TEMPLATE}
       'datafilm'=>$datafilm,//ngirim variable ke view yang ada di module admin {DIKIRIM KE VIEW ADMIN}
+      'module'=>'admin'
      );
     // $this->load->view('home_v', $data);
     $this->template->load($data);
@@ -45,7 +46,7 @@ class Film extends MY_Controller{
 
   function edit($id){
     $datafilm=$this->Film_model->get_by_id($id);
-    $datagenre=$this->Genre_model->genrebyfilm($id);//panggil ke modell
+    $datagenre=$this->Film_genre->genrebyfilm($id);//panggil ke modell
     $arr=[];
     foreach ($datagenre as $d) {
       array_push($arr,$d->id_genre);
@@ -61,6 +62,20 @@ class Film extends MY_Controller{
      );
     // $this->load->view('home_v', $data);
     $this->template->load($data);
+  }
+
+  public function delete($id)
+  {
+      $row = $this->Film_model->get_by_id($id);
+
+      if ($row) {
+          $this->Film_model->delete($id);
+          $this->session->set_flashdata('message', 'Delete Record Success');
+          redirect(site_url('admin/film'));
+      } else {
+          $this->session->set_flashdata('message', 'Record Not Found');
+          redirect(site_url('admin/film'));
+      }
   }
 
   public function create_action()
@@ -92,7 +107,7 @@ class Film extends MY_Controller{
                 'id_film'=>$this->input->post('id_film',TRUE),
                 'id_genre'=>$k
               );
-              $this->Film_model->insert_film_genre($data);
+              $this->Film_genre->insert($data);
               # code...
             }
           }

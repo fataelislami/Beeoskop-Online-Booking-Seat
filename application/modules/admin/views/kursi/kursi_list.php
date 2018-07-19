@@ -4,11 +4,11 @@
             <div class="card-body">
               <div class="row">
                   <div class="col-md-6">
-                      <h4 class="card-title">Data Film</h4>
+                      <h4 class="card-title">Data Kursi</h4>
                       <h6 class="card-subtitle">Export data to Copy, CSV, Excel, PDF & Print</h6>
                   </div>
                   <div class="col-md-6 text-right">
-                      <?php echo anchor(site_url('admin/film/tambah'), '+ Tambah Film', 'class="btn btn-primary"'); ?>
+                      <?php echo anchor(site_url($module.'/kursi/create'), '+ Tambah Data', 'class="btn btn-primary"'); ?>
       	    </div>
               </div>
 
@@ -17,25 +17,23 @@
                     <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                             <tr>
-                                <th>id</th>
-                                <th>Judul Film</th>
-                                <th>Tahun Produksi</th>
-                                <th>Durasi</th>
-                                <th>Action</th>
+                                <?php foreach ($datafield as $d): ?>
+                                  <th><?php echo str_replace("_"," ",$d) ?></th>
+                                <?php endforeach; ?>
+                                <th>aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                          <?php foreach ($datafilm as $d): ?>
+                          <?php foreach ($datakursi as $d): ?>
                             <tr>
-                                <td><?php echo $d->id_film ?></td>
-                                <td><?php echo $d->judul_film ?></td>
-                                <td><?php echo $d->tahun_produksi ?></td>
-                                <td><?php echo $d->durasi ?></td>
+                              <?php foreach ($datafield as $df): ?>
+                                <td><?php echo $d->$df ?></td>
+                              <?php endforeach; ?>
                                 <td>
-                                    <a href="<?php echo base_url().'admin/film/edit/'.$d->id_film?>">
+                                <a href="<?php echo base_url().$module?>/kursi/edit/<?php echo $d->id_kursi ?>">
                                         <button class="btn btn-success waves-effect waves-light m-r-10">Edit</button>
                                     </a>
-                                    <a href="<?php echo base_url().$module?>/film/delete/<?php echo $d->id_film ?>">
+                                    <a href="<?php echo base_url().$module?>/kursi/delete/<?php echo $d->id_kursi ?>">
                                       <button class="btn btn-danger waves-effect waves-light m-r-10" >Delete</button>
                                     </a>
                                 </td>

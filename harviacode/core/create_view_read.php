@@ -1,26 +1,33 @@
-<?php 
+<?php
 
-$string = "<!doctype html>
-<html>
-    <head>
-        <title>harviacode.com - codeigniter crud generator</title>
-        <link rel=\"stylesheet\" href=\"<?php echo base_url('assets/bootstrap/css/bootstrap.min.css') ?>\"/>
-        <style>
-            body{
-                padding: 15px;
-            }
-        </style>
-    </head>
-    <body>
-        <h2 style=\"margin-top:0px\">".ucfirst($table_name)." Read</h2>
-        <table class=\"table\">";
+$string = "<div class=\"row\">
+  <div class=\"col-12\">
+    <div class=\"card\">
+        <div class=\"card-body\">
+            <h4 class=\"card-title\">Tambah ".ucfirst($table_name)."</h4>
+            <form class=\"form-material m-t-40\" method=\"post\" action=\"<?php echo base_url().\$action ?>\">";
+            $string .= "\n\t  <div class=\"form-group\">
+                    <label>".$pk."</label>
+                    <input type=\"text\" name=\"".$pk."\" class=\"form-control\" placeholder=\"\" value=\"<?php echo \$dataedit->$pk?>\" readonly>
+            </div>";
 foreach ($non_pk as $row) {
-    $string .= "\n\t    <tr><td>".label($row["column_name"])."</td><td><?php echo $".$row["column_name"]."; ?></td></tr>";
+
+    $string .= "\n\t  <div class=\"form-group\">
+            <label>".$row["column_name"]."</label>
+            <input type=\"text\" name=\"".$row["column_name"]."\" class=\"form-control\" value=\"<?php echo \$dataedit->".$row["column_name"]."?>\">
+    </div>";
+
 }
-$string .= "\n\t    <tr><td></td><td><a href=\"<?php echo site_url('".$c_url."') ?>\" class=\"btn btn-default\">Cancel</a></td></tr>";
-$string .= "\n\t</table>
-        </body>
-</html>";
+$string .= "\n\t
+                <div class=\"form-group\">
+                  <button type=\"submit\" class=\"btn btn-success waves-effect waves-light m-r-10\">Submit</button>
+                </div>
+            </form>
+        </div>
+    </div>
+  </div>
+</div>
+";
 
 
 

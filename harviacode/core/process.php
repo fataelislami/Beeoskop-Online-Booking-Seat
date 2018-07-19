@@ -20,7 +20,7 @@ if (isset($_POST['generate']))
         $c = $controller <> '' ? ucfirst($controller) : ucfirst($table_name);
         $m = $model <> '' ? ucfirst($model) : ucfirst($table_name) . '_model';
         $v_list = $table_name . "_list";
-        $v_read = $table_name . "_read";
+        $v_read = $table_name . "_edit";
         $v_form = $table_name . "_form";
         $v_doc = $table_name . "_doc";
         $v_pdf = $table_name . "_pdf";
@@ -99,7 +99,7 @@ if (isset($_POST['generateall']))
         $c = ucfirst($table_name);
         $m = ucfirst($table_name) . '_model';
         $v_list = $table_name . "_list";
-        $v_read = $table_name . "_read";
+        $v_read = $table_name . "_edit";
         $v_form = $table_name . "_form";
         $v_doc = $table_name . "_doc";
         $v_pdf = $table_name . "_pdf";

@@ -38,4 +38,11 @@ function deleteAll($id_film){
   $this->db->delete('film_genre');
 }
 
+
+function genrebyfilm($id_film){
+  $this->db->select('id_genre');
+  $this->db->where('id_film',$id_film);
+  return $this->db->get('film_genre')->result();
+}
+
 }

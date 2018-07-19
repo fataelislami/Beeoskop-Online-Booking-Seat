@@ -66,6 +66,19 @@ $string .= "\n\n
       \$this->template->load(\$data);
     }
 
+    public function edit(\$id){
+      \$dataedit=\$this->".$m."->get_by_id(\$id);
+      \$data = array(
+        'contain_view' => '{namamodule}/$c_url/$v_read',
+        'sidebar'=>'{namamodule}/sidebar',//Ini buat menu yang ditampilkan di module admin {DIKIRIM KE TEMPLATE}
+        'css'=>'{namamodule}/crudassets/css',//Ini buat kirim css dari page nya  {DIKIRIM KE TEMPLATE}
+        'script'=>'{namamodule}/crudassets/script',//ini buat javascript apa aja yang di load di page {DIKIRIM KE TEMPLATE}
+        'action'=>'{namamodule}/$c_url/update_action',
+        'dataedit'=>\$dataedit
+       );
+      \$this->template->load(\$data);
+    }
+
 
     public function create_action()
     {

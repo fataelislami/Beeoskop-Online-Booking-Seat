@@ -13,6 +13,15 @@
         <li>
             <a class="waves-effect waves-dark" href="<?php echo base_url()?>admin/jam_tayang"><i class="mdi mdi-gauge"></i><span class="hide-menu">Jam Tayang</span></a>
         </li>
+        <li>
+            <a class="waves-effect waves-dark" href="<?php echo base_url()?>admin/studio"><i class="mdi mdi-gauge"></i><span class="hide-menu">Studio</span></a>
+        </li>
+        <li>
+            <a class="waves-effect waves-dark" href="<?php echo base_url()?>admin/kursi"><i class="mdi mdi-gauge"></i><span class="hide-menu">Kursi</span></a>
+        </li>
+        <li>
+            <a class="waves-effect waves-dark" href="<?php echo base_url()?>admin/user"><i class="mdi mdi-gauge"></i><span class="hide-menu">User</span></a>
+        </li>
         <!-- <li>
             <a class="waves-effect waves-dark" href="<?php echo base_url()?>admin/users"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Member </span></a>
         </li> -->
