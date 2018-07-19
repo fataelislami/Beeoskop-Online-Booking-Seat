@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 4.7.9
+-- version 4.8.0.1
 -- https://www.phpmyadmin.net/
 --
 -- Host: localhost
--- Generation Time: Jul 10, 2018 at 10:27 PM
--- Server version: 10.1.31-MariaDB
--- PHP Version: 5.6.34
+-- Generation Time: Jul 19, 2018 at 09:04 AM
+-- Server version: 10.1.32-MariaDB
+-- PHP Version: 5.6.36
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 SET AUTOCOMMIT = 0;
@@ -21,6 +21,38 @@ SET time_zone = "+00:00";
 --
 -- Database: `bioskop`
 --
+
+-- --------------------------------------------------------
+
+--
+-- Table structure for table `biodata`
+--
+
+CREATE TABLE `biodata` (
+  `id` int(11) NOT NULL,
+  `nama` varchar(225) NOT NULL,
+  `alamat` varchar(225) NOT NULL,
+  `umur` varchar(20) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+
+--
+-- Dumping data for table `biodata`
+--
+
+INSERT INTO `biodata` (`id`, `nama`, `alamat`, `umur`) VALUES
+(1, 'fata', 'sukatani', '21'),
+(2, 'Fata El Islami', 'Sekeloa Bandung', '19'),
+(3, 'Falday', 'subang', '22'),
+(4, 'Reza', 'Ciparay', '22'),
+(5, 'FALDI', 'CUY', '29'),
+(6, 'Falday', 'COBLONG', 'OKEY'),
+(7, 'dwi', 'Curug', '29'),
+(8, 'OKE', 'CIHUY', 'UCCY'),
+(9, 'FALDI', 'Cilcap', '22'),
+(10, 'Helsan', 'Sekeloa', '21'),
+(11, 'faldi fav', 'sekeloaaaa cilacap', '99'),
+(12, 'Iqbal', 'Sekeloa', '21'),
+(13, 'irman', 'coblong', '99');
 
 -- --------------------------------------------------------
 
@@ -44,11 +76,10 @@ CREATE TABLE `film` (
 --
 
 INSERT INTO `film` (`id_film`, `judul_film`, `tahun_produksi`, `sinopsis`, `durasi`, `tanggal_mulai`, `tanggal_selesai`, `url_gambar`) VALUES
-('AIW', 'Avengers Infinity War', '2007', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum', '2J 40M', '2018-07-02', '2018-08-02', ''),
-('ANT', 'ANT-MAN', '2005', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum', '1J 5M', '2018-06-01', '2018-07-31', ''),
-('JRC', 'Jurasic', '2018', 'TEST OKE', '2 Jam', '2018-07-25', '2018-07-21', 'www.google.com'),
-('JRX', 'TEST', '2018', 'OKESIP', '2 Jam', '2018-07-24', '2018-07-19', 'www.google.com'),
-('SPD', 'SPIDERMAN', '2006', 'Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry\'s standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum', '2J 13M', '2018-07-02', '2018-08-02', '');
+('CZT', 'Cek En RIcek', '2018', 'OKEY', '3 JAM', '2018-07-19', '2018-07-25', 'www.facebok.com'),
+('HRD', 'HereditarEE', '2018', 'Asyiq', '2 Jam', '2018-07-17', '2018-07-26', 'www.google.com'),
+('INF', 'Infinity War', '2018', 'OKAY', '3 JAM', '2018-07-17', '2018-07-27', 'www.facebok.com'),
+('JRC', 'Jurasic World', '2018', 'This Film Is Awsem', '2 Jam', '2018-07-16', '2018-07-20', 'www.google.com');
 
 -- --------------------------------------------------------
 
@@ -58,7 +89,7 @@ INSERT INTO `film` (`id_film`, `judul_film`, `tahun_produksi`, `sinopsis`, `dura
 
 CREATE TABLE `film_genre` (
   `id_film` varchar(225) NOT NULL,
-  `id_genre` varchar(225) NOT NULL
+  `id_genre` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 --
@@ -66,9 +97,11 @@ CREATE TABLE `film_genre` (
 --
 
 INSERT INTO `film_genre` (`id_film`, `id_genre`) VALUES
-('ANT', '1'),
-('ANT', '2'),
-('ANT', '3');
+('CZT', 1),
+('CZT', 3),
+('CZT', 6),
+('HRD', 3),
+('HRD', 6);
 
 -- --------------------------------------------------------
 
@@ -77,7 +110,7 @@ INSERT INTO `film_genre` (`id_film`, `id_genre`) VALUES
 --
 
 CREATE TABLE `genre` (
-  `id_genre` varchar(225) NOT NULL,
+  `id_genre` int(11) NOT NULL,
   `nama_genre` varchar(225) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -86,9 +119,10 @@ CREATE TABLE `genre` (
 --
 
 INSERT INTO `genre` (`id_genre`, `nama_genre`) VALUES
-('1', 'Action'),
-('2', 'Romance'),
-('3', 'Adventure');
+(1, 'Action'),
+(2, 'Komedy'),
+(3, 'Romance'),
+(6, 'Horror');
 
 -- --------------------------------------------------------
 
@@ -97,20 +131,11 @@ INSERT INTO `genre` (`id_genre`, `nama_genre`) VALUES
 --
 
 CREATE TABLE `jadwal` (
-  `id_jadwal` varchar(225) NOT NULL,
-  `id_studio` varchar(225) NOT NULL,
+  `id_jadwal` int(11) NOT NULL,
+  `id_studio` int(11) NOT NULL,
   `id_film` varchar(225) DEFAULT NULL,
-  `id_jam_tayang` varchar(225) NOT NULL
+  `id_jam_tayang` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `jadwal`
---
-
-INSERT INTO `jadwal` (`id_jadwal`, `id_studio`, `id_film`, `id_jam_tayang`) VALUES
-('1', '1', 'AIW', '1'),
-('2', '2', 'SPD', '2'),
-('3', '3', 'ANT', '3');
 
 -- --------------------------------------------------------
 
@@ -119,7 +144,7 @@ INSERT INTO `jadwal` (`id_jadwal`, `id_studio`, `id_film`, `id_jam_tayang`) VALU
 --
 
 CREATE TABLE `jam_tayang` (
-  `id_jam_tayang` varchar(225) NOT NULL,
+  `id_jam_tayang` int(11) NOT NULL,
   `jam_tayang` time NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
@@ -128,9 +153,8 @@ CREATE TABLE `jam_tayang` (
 --
 
 INSERT INTO `jam_tayang` (`id_jam_tayang`, `jam_tayang`) VALUES
-('1', '12:10:00'),
-('2', '15:00:00'),
-('3', '22:00:00');
+(2, '10:10:00'),
+(3, '10:10:00');
 
 -- --------------------------------------------------------
 
@@ -139,18 +163,9 @@ INSERT INTO `jam_tayang` (`id_jam_tayang`, `jam_tayang`) VALUES
 --
 
 CREATE TABLE `kursi` (
-  `id_kursi` varchar(225) NOT NULL,
+  `id_kursi` int(11) NOT NULL,
   `no_kursi` varchar(225) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `kursi`
---
-
-INSERT INTO `kursi` (`id_kursi`, `no_kursi`) VALUES
-('1', '1A'),
-('2', '2A'),
-('3', '3A');
 
 -- --------------------------------------------------------
 
@@ -178,7 +193,7 @@ INSERT INTO `level` (`id_level`, `nama_level`) VALUES
 --
 
 CREATE TABLE `studio` (
-  `id_studio` varchar(225) NOT NULL,
+  `id_studio` int(11) NOT NULL,
   `nama_studio` varchar(225) NOT NULL,
   `harga` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
@@ -188,9 +203,11 @@ CREATE TABLE `studio` (
 --
 
 INSERT INTO `studio` (`id_studio`, `nama_studio`, `harga`) VALUES
-('1', 'Studio 1', 0),
-('2', 'Studio 2', 0),
-('3', 'Studio 3', 0);
+(1, 'STUDIO 1', 35000),
+(2, 'STUDIO 2', 25000),
+(3, 'STUDIO 3', 25000),
+(4, 'STUDIO 4', 15000),
+(5, 'STUDIO 6', 120000);
 
 -- --------------------------------------------------------
 
@@ -199,20 +216,11 @@ INSERT INTO `studio` (`id_studio`, `nama_studio`, `harga`) VALUES
 --
 
 CREATE TABLE `tiket` (
-  `id_tiket` varchar(225) NOT NULL,
+  `id_tiket` int(11) NOT NULL,
   `id_transaksi` varchar(225) NOT NULL,
-  `id_jadwal` varchar(225) NOT NULL,
-  `id_kursi` varchar(225) NOT NULL
+  `id_jadwal` int(11) NOT NULL,
+  `id_kursi` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
-
---
--- Dumping data for table `tiket`
---
-
-INSERT INTO `tiket` (`id_tiket`, `id_transaksi`, `id_jadwal`, `id_kursi`) VALUES
-('1', '1', '1', '1'),
-('2', '1', '1', '2'),
-('3', '1', '1', '3');
 
 -- --------------------------------------------------------
 
@@ -225,7 +233,7 @@ CREATE TABLE `transaksi` (
   `tanggal_bayar` date NOT NULL,
   `total` int(11) NOT NULL,
   `jumlah_tiket` int(11) NOT NULL,
-  `username` varchar(259) NOT NULL
+  `username` varchar(225) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
 
 -- --------------------------------------------------------
@@ -250,12 +258,17 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`username`, `password`, `nama`, `jenis_kelamin`, `tanggal_lahir`, `email`, `kota`, `id_level`) VALUES
-('admin', '21232F297A57A5A743894A0E4A801FC3', 'Abdul', 'L', '2017-11-01', 'Abdul@gmail.com', 'Bandung', 1),
-('pemesan', '91441FCF36611AAE245CE6CAC604C36B', 'Deni', 'L', '2017-08-17', 'Deni@gmail.com', 'Banjaran', 2);
+('admin', '0192023a7bbd73250516f069df18b500', 'Fata El Islami', 'L', '2018-07-09', 'santribloggers@gmail.com', 'Purwakarta', 1);
 
 --
 -- Indexes for dumped tables
 --
+
+--
+-- Indexes for table `biodata`
+--
+ALTER TABLE `biodata`
+  ADD PRIMARY KEY (`id`);
 
 --
 -- Indexes for table `film`
@@ -267,6 +280,7 @@ ALTER TABLE `film`
 -- Indexes for table `film_genre`
 --
 ALTER TABLE `film_genre`
+  ADD UNIQUE KEY `id_film_2` (`id_film`,`id_genre`),
   ADD KEY `id_film` (`id_film`),
   ADD KEY `id_genre` (`id_genre`);
 
@@ -281,8 +295,8 @@ ALTER TABLE `genre`
 --
 ALTER TABLE `jadwal`
   ADD PRIMARY KEY (`id_jadwal`),
-  ADD KEY `id_studio` (`id_studio`,`id_film`,`id_jam_tayang`),
-  ADD KEY `id_film` (`id_film`,`id_jam_tayang`),
+  ADD KEY `id_studio` (`id_studio`),
+  ADD KEY `id_film` (`id_film`),
   ADD KEY `id_jam_tayang` (`id_jam_tayang`);
 
 --
@@ -316,6 +330,7 @@ ALTER TABLE `tiket`
   ADD PRIMARY KEY (`id_tiket`),
   ADD KEY `id_transaksi` (`id_transaksi`),
   ADD KEY `id_jadwal` (`id_jadwal`),
+  ADD KEY `id_jadwal_2` (`id_jadwal`),
   ADD KEY `id_kursi` (`id_kursi`);
 
 --
@@ -337,10 +352,46 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT for table `biodata`
+--
+ALTER TABLE `biodata`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
+-- AUTO_INCREMENT for table `genre`
+--
+ALTER TABLE `genre`
+  MODIFY `id_genre` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+
+--
+-- AUTO_INCREMENT for table `jam_tayang`
+--
+ALTER TABLE `jam_tayang`
+  MODIFY `id_jam_tayang` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=4;
+
+--
+-- AUTO_INCREMENT for table `kursi`
+--
+ALTER TABLE `kursi`
+  MODIFY `id_kursi` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT for table `level`
 --
 ALTER TABLE `level`
   MODIFY `id_level` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
+-- AUTO_INCREMENT for table `studio`
+--
+ALTER TABLE `studio`
+  MODIFY `id_studio` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
+
+--
+-- AUTO_INCREMENT for table `tiket`
+--
+ALTER TABLE `tiket`
+  MODIFY `id_tiket` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- Constraints for dumped tables
@@ -357,17 +408,17 @@ ALTER TABLE `film_genre`
 -- Constraints for table `jadwal`
 --
 ALTER TABLE `jadwal`
-  ADD CONSTRAINT `jadwal_ibfk_1` FOREIGN KEY (`id_studio`) REFERENCES `studio` (`id_studio`),
-  ADD CONSTRAINT `jadwal_ibfk_2` FOREIGN KEY (`id_jam_tayang`) REFERENCES `jam_tayang` (`id_jam_tayang`),
+  ADD CONSTRAINT `jadwal_ibfk_1` FOREIGN KEY (`id_jam_tayang`) REFERENCES `jam_tayang` (`id_jam_tayang`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `jadwal_ibfk_2` FOREIGN KEY (`id_studio`) REFERENCES `studio` (`id_studio`) ON DELETE CASCADE ON UPDATE CASCADE,
   ADD CONSTRAINT `jadwal_ibfk_3` FOREIGN KEY (`id_film`) REFERENCES `film` (`id_film`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `tiket`
 --
 ALTER TABLE `tiket`
-  ADD CONSTRAINT `tiket_ibfk_1` FOREIGN KEY (`id_transaksi`) REFERENCES `transaksi` (`id_transaksi`),
-  ADD CONSTRAINT `tiket_ibfk_2` FOREIGN KEY (`id_jadwal`) REFERENCES `jadwal` (`id_jadwal`),
-  ADD CONSTRAINT `tiket_ibfk_3` FOREIGN KEY (`id_kursi`) REFERENCES `kursi` (`id_kursi`);
+  ADD CONSTRAINT `tiket_ibfk_1` FOREIGN KEY (`id_kursi`) REFERENCES `kursi` (`id_kursi`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tiket_ibfk_2` FOREIGN KEY (`id_transaksi`) REFERENCES `transaksi` (`id_transaksi`) ON DELETE CASCADE ON UPDATE CASCADE,
+  ADD CONSTRAINT `tiket_ibfk_3` FOREIGN KEY (`id_jadwal`) REFERENCES `jadwal` (`id_jadwal`) ON DELETE CASCADE ON UPDATE CASCADE;
 
 --
 -- Constraints for table `transaksi`
