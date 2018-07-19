@@ -2,12 +2,12 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 class Film extends MY_Controller{
-
+// test
   public function __construct()
   {
     parent::__construct();
     //Codeigniter : Write Less Do More
-    $this->load->model(array('Film_model'));
+    $this->load->model(array('Film_model','Genre_model','Film_genre'));
     if($this->session->userdata('status')!='login'){
       redirect(base_url('login'));
     }
@@ -19,7 +19,7 @@ class Film extends MY_Controller{
 
   function index()
   {
-    $datafilm=$this->Film_model->get_all();//panggil ke modell
+    $datafilm=$this->Film_model->get_all();//panggil ke model
     $data = array(
       'contain_view' => 'admin/film/vTable',
       'sidebar'=>'admin/sidebar',//Ini buat menu yang ditampilkan di module admin {DIKIRIM KE TEMPLATE}
@@ -43,13 +43,35 @@ class Film extends MY_Controller{
     $this->template->load($data);
   }
 
+  function edit($id){
+    $datafilm=$this->Film_model->get_by_id($id);
+    $datagenre=$this->Genre_model->genrebyfilm($id);//panggil ke modell
+    $arr=[];
+    foreach ($datagenre as $d) {
+      array_push($arr,$d->id_genre);
+    }//panggil ke modell
+    $data = array(
+      'contain_view' => 'admin/film/vEdit',
+      'sidebar'=>'admin/sidebar',//Ini buat menu yang ditampilkan di module admin {DIKIRIM KE TEMPLATE}
+      'css'=>'admin/film/assets/css',//Ini buat kirim css dari page nya  {DIKIRIM KE TEMPLATE}
+      'script'=>'admin/film/assets/scriptEdit',//ini buat javascript apa aja yang di load di page {DIKIRIM KE TEMPLATE}
+      'nama'=>'ADMIN',
+      'datafilm'=>$datafilm,
+      'datagenre'=>$arr//ngirim variable ke view yang ada di module admin {DIKIRIM KE VIEW ADMIN}
+     );
+    // $this->load->view('home_v', $data);
+    $this->template->load($data);
+  }
+
   public function create_action()
   {
+
       $this->_rules();
 
       if ($this->form_validation->run() == FALSE) {
           $this->create();
       } else {
+
           $data = array(
   'id_film' => $this->input->post('id_film',TRUE),
   'judul_film' => $this->input->post('judul_film',TRUE),
@@ -62,7 +84,65 @@ class Film extends MY_Controller{
     );
 
           $this->Film_model->insert($data);
+
+          if(isset($_POST['genre'])){
+            $genre=$_POST['genre'];
+            foreach ($genre as $k) {
+              $data=array(
+                'id_film'=>$this->input->post('id_film',TRUE),
+                'id_genre'=>$k
+              );
+              $this->Film_model->insert_film_genre($data);
+              # code...
+            }
+          }
           $this->session->set_flashdata('message', 'Create Record Success');
+          redirect(site_url('admin/film'));
+      }
+  }
+
+  public function update_action()
+  {
+
+      $this->_rules();
+
+      if ($this->form_validation->run() == FALSE) {
+          $this->update($this->input->post('id_film', TRUE));
+      } else {
+          $data = array(
+  'judul_film' => $this->input->post('judul_film',TRUE),
+  'tahun_produksi' => $this->input->post('tahun_produksi',TRUE),
+  'sinopsis' => $this->input->post('sinopsis',TRUE),
+  'durasi' => $this->input->post('durasi',TRUE),
+  'tanggal_mulai' => $this->input->post('tanggal_mulai',TRUE),
+  'tanggal_selesai' => $this->input->post('tanggal_selesai',TRUE),
+  'url_gambar' => $this->input->post('url_gambar',TRUE),
+    );
+
+          $this->Film_model->update($this->input->post('id_film', TRUE), $data);
+          //Delete Film Genre Berdasarkan Checkbox
+          if(isset($_POST['genre'])){
+            foreach ($_POST['genre'] as $k) {
+              $data=array(
+                'id_film'=>$_POST['id_film'],
+                'id_genre'=>$k
+              );
+              $sql=$this->Film_genre->insert($data);
+              if($sql){
+                echo "sukses";
+              }else{
+                echo "gagal";
+              }
+            }
+            //FUNGSI UNTUK DELETE FILM YANG ID FILM DAN ID GENRE DILUAR DATA ARRAY
+            $this->Film_genre->delete($_POST['id_film'],$_POST['genre']);
+
+          }else{
+            //KALO CHEKBOX TIDAK DICEK SEMUA DELETE ALL
+            $this->Film_genre->deleteAll($_POST['id_film']);
+          }
+          //Delete Film Genre Berdasarkan Checkbox
+          $this->session->set_flashdata('message', 'Update Record Success');
           redirect(site_url('admin/film'));
       }
   }

@@ -26,9 +26,9 @@ class Film_model extends CI_Model
     function get_by_id($id)
     {
         $this->db->where($this->id, $id);
-        return $this->db->get($this->table)->row();
+        return $this->db->get($this->table)->result();
     }
-    
+
     // get total rows
     function total_rows($q = NULL) {
         $this->db->like('id_film', $q);
@@ -63,6 +63,8 @@ class Film_model extends CI_Model
     {
         $this->db->insert($this->table, $data);
     }
+
+    
 
     // update data
     function update($id, $data)

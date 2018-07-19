@@ -3,38 +3,6 @@
 <!-- Sweet-Alert  -->
 <script src="<?php echo base_url()?>assets/plugins/sweetalert/sweetalert.min.js"></script>
 <script src="<?php echo base_url()?>assets/plugins/sweetalert/jquery.sweet-alert.custom.js"></script>
-<script type="text/javascript">
-  $(document).ready(function(){
-    function load(){
-      var settings = {
-  "async": true,
-  "crossDomain": true,
-  "url": "http://localhost/bioskop/admin/json/genre",
-  "method": "GET",
-  "headers": {
-    "Cache-Control": "no-cache",
-    "Postman-Token": "c6dcf6b9-3528-4491-bc7e-c55923415b15"
-  }
-}
-
-$.ajax(settings).done(function (response) {
-  items=JSON.parse(response);
-  var akhir=items.length-1;
-  // console.log(items[0].nama_genre);
-  for(var i=0;i<=akhir;i++){
-
-    $("#genre1").append('<label class="custom-control custom-checkbox"><input type="checkbox" name="genre[]" class="custom-control-input" value="'+items[i].id_genre+'"'+status+'><span class="custom-control-indicator"></span><span class="custom-control-description">'+items[i].nama_genre+'</span></label>');
-  }
-});
-    }
-
-    load();
-  });
-</script>
-
-
-
-
 <script>
 jQuery(document).ready(function() {
 

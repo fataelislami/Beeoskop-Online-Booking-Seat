@@ -31,6 +31,12 @@ class Genre extends MY_Controller{
     $this->template->load($data);
   }
 
+  function json(){
+    $datagenre=$this->Genre_model->get_all();//panggil ke modell
+    $json=json_encode($datagenre);
+    echo $json;
+  }
+
   function tambah(){
     $data = array(
       'contain_view' => 'admin/genre/vCreate',

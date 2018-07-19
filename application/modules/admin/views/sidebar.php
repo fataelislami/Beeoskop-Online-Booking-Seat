@@ -10,6 +10,9 @@
         <li>
             <a class="waves-effect waves-dark" href="<?php echo base_url()?>admin/genre"><i class="mdi mdi-gauge"></i><span class="hide-menu">Genre</span></a>
         </li>
+        <li>
+            <a class="waves-effect waves-dark" href="<?php echo base_url()?>admin/jam_tayang"><i class="mdi mdi-gauge"></i><span class="hide-menu">Jam Tayang</span></a>
+        </li>
         <!-- <li>
             <a class="waves-effect waves-dark" href="<?php echo base_url()?>admin/users"><i class="mdi mdi-account-multiple"></i><span class="hide-menu">Member </span></a>
         </li> -->

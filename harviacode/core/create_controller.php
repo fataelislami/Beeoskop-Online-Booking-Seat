@@ -5,7 +5,7 @@ $string = "<?php
 if (!defined('BASEPATH'))
     exit('No direct script access allowed');
 
-class " . $c . " extends CI_Controller
+class " . $c . " extends MY_Controller
 {
     function __construct()
     {
@@ -16,86 +16,58 @@ class " . $c . " extends CI_Controller
 if ($jenis_tabel <> 'reguler_table') {
     $string .= "        \n\t\$this->load->library('datatables');";
 }
-        
+
 $string .= "
     }";
 
 if ($jenis_tabel == 'reguler_table') {
-    
+
 $string .= "\n\n    public function index()
     {
-        \$q = urldecode(\$this->input->get('q', TRUE));
-        \$start = intval(\$this->input->get('start'));
-        
-        if (\$q <> '') {
-            \$config['base_url'] = base_url() . '$c_url/index.html?q=' . urlencode(\$q);
-            \$config['first_url'] = base_url() . '$c_url/index.html?q=' . urlencode(\$q);
-        } else {
-            \$config['base_url'] = base_url() . '$c_url/index.html';
-            \$config['first_url'] = base_url() . '$c_url/index.html';
-        }
 
-        \$config['per_page'] = 10;
-        \$config['page_query_string'] = TRUE;
-        \$config['total_rows'] = \$this->" . $m . "->total_rows(\$q);
-        \$$c_url = \$this->" . $m . "->get_limit_data(\$config['per_page'], \$start, \$q);
+      \$data$c_url=\$this->".$m."->get_all();//panggil ke modell
+      \$datafield=\$this->".$m."->get_field();//panggil ke modell
 
-        \$this->load->library('pagination');
-        \$this->pagination->initialize(\$config);
-
-        \$data = array(
-            '" . $c_url . "_data' => \$$c_url,
-            'q' => \$q,
-            'pagination' => \$this->pagination->create_links(),
-            'total_rows' => \$config['total_rows'],
-            'start' => \$start,
-        );
-        \$this->load->view('$c_url/$v_list', \$data);
+      \$data = array(
+        'contain_view' => '{namamodule}/$c_url/$v_list',
+        'sidebar'=>'{namamodule}/sidebar',
+        'css'=>'{namamodule}/crudassets/css',
+        'script'=>'{namamodule}/crudassets/script',
+        'data$c_url'=>\$data$c_url,
+        'datafield'=>\$datafield,
+        'module'=>'{namamodule}'
+       );
+      \$this->template->load(\$data);
     }";
 
 } else {
-    
+
 $string .="\n\n    public function index()
     {
         \$this->load->view('$c_url/$v_list');
-    } 
-    
+    }
+
     public function json() {
         header('Content-Type: application/json');
         echo \$this->" . $m . "->json();
     }";
 
 }
-    
-$string .= "\n\n    public function read(\$id) 
-    {
-        \$row = \$this->" . $m . "->get_by_id(\$id);
-        if (\$row) {
-            \$data = array(";
-foreach ($all as $row) {
-    $string .= "\n\t\t'" . $row['column_name'] . "' => \$row->" . $row['column_name'] . ",";
-}
-$string .= "\n\t    );
-            \$this->load->view('$c_url/$v_read', \$data);
-        } else {
-            \$this->session->set_flashdata('message', 'Record Not Found');
-            redirect(site_url('$c_url'));
-        }
+
+$string .= "\n\n
+    public function create(){
+      \$data = array(
+        'contain_view' => '{namamodule}/$c_url/$v_form',
+        'sidebar'=>'{namamodule}/sidebar',//Ini buat menu yang ditampilkan di module admin {DIKIRIM KE TEMPLATE}
+        'css'=>'{namamodule}/crudassets/css',//Ini buat kirim css dari page nya  {DIKIRIM KE TEMPLATE}
+        'script'=>'{namamodule}/crudassets/script',//ini buat javascript apa aja yang di load di page {DIKIRIM KE TEMPLATE}
+        'action'=>'{namamodule}/$c_url/create_action'
+       );
+      \$this->template->load(\$data);
     }
 
-    public function create() 
-    {
-        \$data = array(
-            'button' => 'Create',
-            'action' => site_url('$c_url/create_action'),";
-foreach ($all as $row) {
-    $string .= "\n\t    '" . $row['column_name'] . "' => set_value('" . $row['column_name'] . "'),";
-}
-$string .= "\n\t);
-        \$this->load->view('$c_url/$v_form', \$data);
-    }
-    
-    public function create_action() 
+
+    public function create_action()
     {
         \$this->_rules();
 
@@ -110,30 +82,13 @@ $string .= "\n\t    );
 
             \$this->".$m."->insert(\$data);
             \$this->session->set_flashdata('message', 'Create Record Success');
-            redirect(site_url('$c_url'));
+            redirect(site_url('{namamodule}/$c_url'));
         }
     }
-    
-    public function update(\$id) 
-    {
-        \$row = \$this->".$m."->get_by_id(\$id);
 
-        if (\$row) {
-            \$data = array(
-                'button' => 'Update',
-                'action' => site_url('$c_url/update_action'),";
-foreach ($all as $row) {
-    $string .= "\n\t\t'" . $row['column_name'] . "' => set_value('" . $row['column_name'] . "', \$row->". $row['column_name']."),";
-}
-$string .= "\n\t    );
-            \$this->load->view('$c_url/$v_form', \$data);
-        } else {
-            \$this->session->set_flashdata('message', 'Record Not Found');
-            redirect(site_url('$c_url'));
-        }
-    }
-    
-    public function update_action() 
+
+
+    public function update_action()
     {
         \$this->_rules();
 
@@ -143,35 +98,35 @@ $string .= "\n\t    );
             \$data = array(";
 foreach ($non_pk as $row) {
     $string .= "\n\t\t'" . $row['column_name'] . "' => \$this->input->post('" . $row['column_name'] . "',TRUE),";
-}    
+}
 $string .= "\n\t    );
 
             \$this->".$m."->update(\$this->input->post('$pk', TRUE), \$data);
             \$this->session->set_flashdata('message', 'Update Record Success');
-            redirect(site_url('$c_url'));
+            redirect(site_url('{namamodule}/$c_url'));
         }
     }
-    
-    public function delete(\$id) 
+
+    public function delete(\$id)
     {
         \$row = \$this->".$m."->get_by_id(\$id);
 
         if (\$row) {
             \$this->".$m."->delete(\$id);
             \$this->session->set_flashdata('message', 'Delete Record Success');
-            redirect(site_url('$c_url'));
+            redirect(site_url('{namamodule}/$c_url'));
         } else {
             \$this->session->set_flashdata('message', 'Record Not Found');
-            redirect(site_url('$c_url'));
+            redirect(site_url('{namamodule}/$c_url'));
         }
     }
 
-    public function _rules() 
+    public function _rules()
     {";
 foreach ($non_pk as $row) {
     $int = $row3['data_type'] == 'int' || $row['data_type'] == 'double' || $row['data_type'] == 'decimal' ? '|numeric' : '';
     $string .= "\n\t\$this->form_validation->set_rules('".$row['column_name']."', '".  strtolower(label($row['column_name']))."', 'trim|required$int');";
-}    
+}
 $string .= "\n\n\t\$this->form_validation->set_rules('$pk', '$pk', 'trim');";
 $string .= "\n\t\$this->form_validation->set_error_delimiters('<span class=\"text-danger\">', '</span>');
     }";
@@ -232,7 +187,7 @@ if ($export_word == '1') {
             '" . $table_name . "_data' => \$this->" . $m . "->get_all(),
             'start' => 0
         );
-        
+
         \$this->load->view('" . $c_url ."/". $v_doc . "',\$data);
     }";
 }
@@ -244,21 +199,18 @@ if ($export_pdf == '1') {
             '" . $table_name . "_data' => \$this->" . $m . "->get_all(),
             'start' => 0
         );
-        
+
         ini_set('memory_limit', '32M');
         \$html = \$this->load->view('" . $c_url ."/". $v_pdf . "', \$data, true);
         \$this->load->library('pdf');
         \$pdf = \$this->pdf->load();
         \$pdf->WriteHTML(\$html);
-        \$pdf->Output('" . $table_name . ".pdf', 'D'); 
+        \$pdf->Output('" . $table_name . ".pdf', 'D');
     }";
 }
 
-$string .= "\n\n}\n\n/* End of file $c_file */
-/* Location: ./application/controllers/$c_file */
-/* Please DO NOT modify this information : */
-/* Generated by Harviacode Codeigniter CRUD Generator ".date('Y-m-d H:i:s')." */
-/* http://harviacode.com */";
+
+$string .="\n\n}";
 
 
 
