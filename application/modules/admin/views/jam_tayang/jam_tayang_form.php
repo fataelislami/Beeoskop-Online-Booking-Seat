@@ -6,8 +6,9 @@
             <form class="form-material m-t-40" method="post" action="<?php echo base_url().$action ?>">
 	  <div class="form-group">
             <label>jam_tayang</label>
-            <input type="time" name="jam_tayang" class="form-control" placeholder="">
+            <input type="text" id="time" name="jam_tayang" class="form-control" placeholder="">
     </div>
+
 	    <input type="hidden" name="id_jam_tayang" />
 
                 <div class="form-group">

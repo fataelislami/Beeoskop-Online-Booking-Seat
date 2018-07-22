@@ -42,7 +42,7 @@ class Jam_tayang extends MY_Controller
         'contain_view' => 'admin/jam_tayang/jam_tayang_form',
         'sidebar'=>'admin/sidebar',//Ini buat menu yang ditampilkan di module admin {DIKIRIM KE TEMPLATE}
         'css'=>'admin/crudassets/css',//Ini buat kirim css dari page nya  {DIKIRIM KE TEMPLATE}
-        'script'=>'admin/crudassets/script',//ini buat javascript apa aja yang di load di page {DIKIRIM KE TEMPLATE}
+        'script'=>'admin/jam_tayang/assets/script',//ini buat javascript apa aja yang di load di page {DIKIRIM KE TEMPLATE}
         'action'=>'admin/jam_tayang/create_action'
        );
       $this->template->load($data);

@@ -9,6 +9,10 @@
                     <input type="text" name="id_kursi" class="form-control" placeholder="" value="<?php echo $dataedit->id_kursi?>" readonly>
             </div>
 	  <div class="form-group">
+            <label>no_baris</label>
+            <input type="text" name="no_baris" class="form-control" value="<?php echo $dataedit->no_baris?>">
+    </div>
+	  <div class="form-group">
             <label>no_kursi</label>
             <input type="text" name="no_kursi" class="form-control" value="<?php echo $dataedit->no_kursi?>">
     </div>

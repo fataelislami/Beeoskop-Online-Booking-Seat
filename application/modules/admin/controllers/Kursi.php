@@ -64,6 +64,7 @@ class Kursi extends MY_Controller
             $this->create();
         } else {
             $data = array(
+		'no_baris' => $this->input->post('no_baris',TRUE),
 		'no_kursi' => $this->input->post('no_kursi',TRUE),
 	    );
 
@@ -83,6 +84,7 @@ class Kursi extends MY_Controller
             $this->update($this->input->post('id_kursi', TRUE));
         } else {
             $data = array(
+		'no_baris' => $this->input->post('no_baris',TRUE),
 		'no_kursi' => $this->input->post('no_kursi',TRUE),
 	    );
 
@@ -108,6 +110,7 @@ class Kursi extends MY_Controller
 
     public function _rules()
     {
+	$this->form_validation->set_rules('no_baris', 'no baris', 'trim|required');
 	$this->form_validation->set_rules('no_kursi', 'no kursi', 'trim|required');
 
 	$this->form_validation->set_rules('id_kursi', 'id_kursi', 'trim');

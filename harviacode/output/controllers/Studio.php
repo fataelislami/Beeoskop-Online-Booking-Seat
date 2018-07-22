@@ -19,13 +19,13 @@ class Studio extends MY_Controller
       $datafield=$this->Studio_model->get_field();//panggil ke modell
 
       $data = array(
-        'contain_view' => 'admin/studio/studio_list',
-        'sidebar'=>'admin/sidebar',
-        'css'=>'admin/crudassets/css',
-        'script'=>'admin/crudassets/script',
+        'contain_view' => '{namamodule}/studio/studio_list',
+        'sidebar'=>'{namamodule}/sidebar',
+        'css'=>'{namamodule}/crudassets/css',
+        'script'=>'{namamodule}/crudassets/script',
         'datastudio'=>$datastudio,
         'datafield'=>$datafield,
-        'module'=>'admin'
+        'module'=>'{namamodule}'
        );
       $this->template->load($data);
     }
@@ -33,11 +33,11 @@ class Studio extends MY_Controller
 
     public function create(){
       $data = array(
-        'contain_view' => 'admin/studio/studio_form',
-        'sidebar'=>'admin/sidebar',//Ini buat menu yang ditampilkan di module admin {DIKIRIM KE TEMPLATE}
-        'css'=>'admin/crudassets/css',//Ini buat kirim css dari page nya  {DIKIRIM KE TEMPLATE}
-        'script'=>'admin/crudassets/script',//ini buat javascript apa aja yang di load di page {DIKIRIM KE TEMPLATE}
-        'action'=>'admin/studio/create_action'
+        'contain_view' => '{namamodule}/studio/studio_form',
+        'sidebar'=>'{namamodule}/sidebar',//Ini buat menu yang ditampilkan di module admin {DIKIRIM KE TEMPLATE}
+        'css'=>'{namamodule}/crudassets/css',//Ini buat kirim css dari page nya  {DIKIRIM KE TEMPLATE}
+        'script'=>'{namamodule}/crudassets/script',//ini buat javascript apa aja yang di load di page {DIKIRIM KE TEMPLATE}
+        'action'=>'{namamodule}/studio/create_action'
        );
       $this->template->load($data);
     }
@@ -45,11 +45,11 @@ class Studio extends MY_Controller
     public function edit($id){
       $dataedit=$this->Studio_model->get_by_id($id);
       $data = array(
-        'contain_view' => 'admin/studio/studio_edit',
-        'sidebar'=>'admin/sidebar',//Ini buat menu yang ditampilkan di module admin {DIKIRIM KE TEMPLATE}
-        'css'=>'admin/crudassets/css',//Ini buat kirim css dari page nya  {DIKIRIM KE TEMPLATE}
-        'script'=>'admin/crudassets/script',//ini buat javascript apa aja yang di load di page {DIKIRIM KE TEMPLATE}
-        'action'=>'admin/studio/update_action',
+        'contain_view' => '{namamodule}/studio/studio_edit',
+        'sidebar'=>'{namamodule}/sidebar',//Ini buat menu yang ditampilkan di module admin {DIKIRIM KE TEMPLATE}
+        'css'=>'{namamodule}/crudassets/css',//Ini buat kirim css dari page nya  {DIKIRIM KE TEMPLATE}
+        'script'=>'{namamodule}/crudassets/script',//ini buat javascript apa aja yang di load di page {DIKIRIM KE TEMPLATE}
+        'action'=>'{namamodule}/studio/update_action',
         'dataedit'=>$dataedit
        );
       $this->template->load($data);
@@ -70,7 +70,7 @@ class Studio extends MY_Controller
 
             $this->Studio_model->insert($data);
             $this->session->set_flashdata('message', 'Create Record Success');
-            redirect(site_url('admin/studio'));
+            redirect(site_url('{namamodule}/studio'));
         }
     }
 
@@ -90,7 +90,7 @@ class Studio extends MY_Controller
 
             $this->Studio_model->update($this->input->post('id_studio', TRUE), $data);
             $this->session->set_flashdata('message', 'Update Record Success');
-            redirect(site_url('admin/studio'));
+            redirect(site_url('{namamodule}/studio'));
         }
     }
 
@@ -101,10 +101,10 @@ class Studio extends MY_Controller
         if ($row) {
             $this->Studio_model->delete($id);
             $this->session->set_flashdata('message', 'Delete Record Success');
-            redirect(site_url('admin/studio'));
+            redirect(site_url('{namamodule}/studio'));
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');
-            redirect(site_url('admin/studio'));
+            redirect(site_url('{namamodule}/studio'));
         }
     }
 

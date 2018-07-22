@@ -4,11 +4,11 @@
             <div class="card-body">
               <div class="row">
                   <div class="col-md-6">
-                      <h4 class="card-title">Data Studio</h4>
+                      <h4 class="card-title">Data Jadwal</h4>
                       <h6 class="card-subtitle">Export data to Copy, CSV, Excel, PDF & Print</h6>
                   </div>
                   <div class="col-md-6 text-right">
-                      <?php echo anchor(site_url($module.'/studio/create'), '+ Tambah Data', 'class="btn btn-primary"'); ?>
+                      <?php echo anchor(site_url($module.'/jadwal/create'), '+ Tambah Data', 'class="btn btn-primary"'); ?>
       	    </div>
               </div>
 
@@ -24,16 +24,16 @@
                             </tr>
                         </thead>
                         <tbody>
-                          <?php foreach ($datastudio as $d): ?>
+                          <?php foreach ($datajadwal as $d): ?>
                             <tr>
                               <?php foreach ($datafield as $df): ?>
                                 <td><?php echo $d->$df ?></td>
                               <?php endforeach; ?>
                                 <td>
-                                <a href="<?php echo base_url().$module?>/studio/edit/<?php echo $d->id_studio ?>">
+                                <a href="<?php echo base_url().$module?>/jadwal/edit/<?php echo $d->id_jadwal ?>">
                                         <button class="btn btn-success waves-effect waves-light m-r-10">Edit</button>
                                     </a>
-                                    <a href="<?php echo base_url().$module?>/studio/delete/<?php echo $d->id_studio ?>">
+                                    <a href="<?php echo base_url().$module?>/jadwal/delete/<?php echo $d->id_jadwal ?>">
                                       <button class="btn btn-danger waves-effect waves-light m-r-10" >Delete</button>
                                     </a>
                                 </td>

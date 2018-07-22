@@ -1063,10 +1063,9 @@
                            <div class="wpc-content">
                               <h3>location</h3>
                               <select name="location">
-                                 <option>Tenguu Cinema Tysons corner</option>
-                                 <option>Tenguu Cinema </option>
-                                 <option>Tenguu Cinema corner</option>
-                                 <option>Tenguu Cinema Tysons</option>
+                                 <option>CGV</option>
+                                 <option>XXI </option>
+
                               </select>
                               <h3 class="mt3">Movie</h3>
                               <select>
@@ -1105,13 +1104,13 @@
                   <h2>Your Information</h2>
                   <div class="order-details">
                      <span> Location:</span>
-                     <p id="locationp">Tenguu Cinema Tysons corner</p>
+                     <p id="locationp">CGV Bandung Electronic Center</p>
                      <span>Time:</span>
                      <p>2016.3.8 18:30</p>
                      <span>Seat: </span>
                      <ul id="selected-seats"></ul>
                      <div>Tickets: <span id="counter">0</span></div>
-                     <div>Total: <b>$<span id="total">0</span></b></div>
+                     <div>Total: <b>Rp.<span id="total">0</span></b></div>
                   </div>
                   <a href="javascript:;" class="close-window"><i class="fa fa-times"></i></a>
                </div>
@@ -1121,7 +1120,7 @@
       <!-- Include jQuery and Scripts -->
       <script type="text/javascript" src="<?php echo base_url()?>frontendassets/js/jquery.min.js"></script>
       <script type="text/javascript" src="<?php echo base_url()?>frontendassets/js/packages.min.js"></script>
-      <script type="text/javascript" src="<?php echo base_url()?>frontendassets/js/scripts.min.js"></script>
+      <script type="text/javascript" src="<?php echo base_url()?>frontendassets/js/scripts.js"></script>
       <!-- jQuery easing plugin -->
    </body>
 </html>

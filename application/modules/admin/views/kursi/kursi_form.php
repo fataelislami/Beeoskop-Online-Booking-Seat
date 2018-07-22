@@ -5,6 +5,10 @@
             <h4 class="card-title">Tambah Kursi</h4>
             <form class="form-material m-t-40" method="post" action="<?php echo base_url().$action ?>">
 	  <div class="form-group">
+            <label>no_baris</label>
+            <input type="text" name="no_baris" class="form-control" placeholder="">
+    </div>
+	  <div class="form-group">
             <label>no_kursi</label>
             <input type="text" name="no_kursi" class="form-control" placeholder="">
     </div>

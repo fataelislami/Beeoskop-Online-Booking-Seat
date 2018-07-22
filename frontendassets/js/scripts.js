@@ -18,7 +18,7 @@
   	$(window).load(function() {
 		// Animate loader off screen
 		$("#loader").hide();
-		
+
 	});
 
 
@@ -26,14 +26,14 @@
 
 	$('.order_btn').magnificPopup({
 	  type:'inline',
-	  removalDelay: 500, 
+	  removalDelay: 500,
 	  mainClass: 'mfp-zoom-in',
 	  callbacks: {
 	    beforeOpen: function() {
 	       this.st.mainClass = this.st.el.attr('data-effect');
 	    }
 	  },
-	  midClick: true 
+	  midClick: true
 
 	});
 	$('.close-window').on('click',function() {
@@ -77,7 +77,7 @@
 
 	});
 
-	
+
 	/* Modal video player */
 	$('.video-player').each(function(){
 		var _video = $(this);
@@ -124,9 +124,9 @@
 
 		}
 
-		//header slider 
+		//header slider
 	});
-	
+
 	$('.carousel').carousel({
         interval: 5000 //changes the speed
     })
@@ -157,7 +157,7 @@
 		});
 
 
-	
+
 	$('.comming-slider').each(function(){
 		var $this = $(this);
 		var comming = new Swiper ('#commingslider', {
@@ -204,16 +204,16 @@
 	    	}
 		  }
 		});
-	 	
+
 	});
 
 
-	
-	//progress bar 
+
+	//progress bar
 	function wpcProgress(){
         if($('.wpc-skills').length) {
              $('.wpc-skills').not('.animated').each(function(){
-                var self = $(this);    
+                var self = $(this);
                 if($(window).scrollTop() >= self.offset().top - $(window).height() ){
                     self.addClass('animated').find('.timer').countTo();
 
@@ -223,10 +223,10 @@
                         objel.css({'width':pb_width});
                     });
                 }
- 
-             });      
+
+             });
          }
-    } 
+    }
     // Carousel
 	$('.wpc-testimonails').each(function(){
 		var $this = $(this);
@@ -238,7 +238,7 @@
 		    spaceBetween: 30,
 		    centeredSlides: true,
 		    //autoplay: 5000,
-		    autoplayDisableOnInteraction: false,	
+		    autoplayDisableOnInteraction: false,
 		   // mousewheelControl: true,
 			loop: true,
 
@@ -253,12 +253,12 @@
 		$(".next").on('click',function(){
 			if(animating) return false;
 			animating = true;
-			
+
 			current_fs = $(this).parent();
 			next_fs = $(this).parent().next();
-			
+
 			//show the next fieldset
-			next_fs.show(); 
+			next_fs.show();
 			//hide the current fieldset with style
 			current_fs.animate({opacity: 0}, {
 				step: function(now, mx) {
@@ -271,12 +271,12 @@
 					opacity = 1 - now;
 					current_fs.css({'transform': 'scale('+scale+')'});
 					next_fs.css({'left': left, 'opacity': opacity});
-				}, 
-				duration: 800, 
+				},
+				duration: 800,
 				complete: function(){
 					current_fs.hide();
 					animating = false;
-				}, 
+				},
 				//this comes from the custom easing plugin
 				easing: 'easeInOutBack'
 			});
@@ -285,12 +285,12 @@
 		$(".previous").on('click',function(){
 			if(animating) return false;
 			animating = true;
-			
+
 			current_fs = $(this).parent();
 			previous_fs = $(this).parent().prev();
-			
+
 			//show the previous fieldset
-			previous_fs.show(); 
+			previous_fs.show();
 			//hide the current fieldset with style
 			current_fs.animate({opacity: 0}, {
 				step: function(now, mx) {
@@ -303,12 +303,12 @@
 					opacity = 1 - now;
 					current_fs.css({'left': left});
 					previous_fs.css({'transform': 'scale('+scale+')', 'opacity': opacity});
-				}, 
-				duration: 800, 
+				},
+				duration: 800,
 				complete: function(){
 					current_fs.hide();
 					animating = false;
-				}, 
+				},
 				//this comes from the custom easing plugin
 				easing: 'easeInOutBack'
 			});
@@ -324,22 +324,22 @@
  		if(e.keyCode == 27) {
  			if ($('#toggle').hasClass('active')) {
 	            $('#toggle').removeClass('active');
-	        } 
+	        }
 	        if ($('.overlay').hasClass('open')) {
 	            $('.overlay').removeClass('open');
-	        } 
+	        }
 	        if ($('#overlay-search').hasClass('active')) {
 	            $('#overlay-search').removeClass('active');
-	        } 
+	        }
 	    }
 	});
 
-	var price = 13; //price
+	var price = 35000; //price
 	$(document).ready(function() {
 		var $cart = $('#selected-seats'), //Sitting Area
 		$counter = $('#counter'), //Votes
 		$total = $('#total'); //Total money
-		
+
 		var sc = $('#seat-map').seatCharts({
 			map: [  //Seating chart
 				'aaaaaaa_aaaaaaa_aaaaaaa',
@@ -360,7 +360,7 @@
 					[ 'a', 'available',   'Available' ],
 					[ 'a', 'unavailable', 'Unavailable'],
 					[ 'a', 'selected', 'selected'],
-				]					
+				]
 			},
 			click: function () { //Click event
 				if (this.status() == 'available') { //optional seat
@@ -368,17 +368,17 @@
 						.attr('id', 'cart-item-'+this.settings.id)
 						.data('seatId', this.settings.id)
 						.appendTo($cart);
-
+					console.log($cart);
 					$counter.text(sc.find('selected').length+1);
 					$total.text(recalculateTotal(sc)+price);
-								
+
 					return 'selected';
 				} else if (this.status() == 'selected') { //Checked
 						//Update Number
 						$counter.text(sc.find('selected').length-1);
 						//update totalnum
 						$total.text(recalculateTotal(sc)-price);
-							
+
 						//Delete reservation
 						$('#cart-item-'+this.settings.id).remove();
 						//optional
@@ -391,8 +391,8 @@
 			}
 		});
 		//sold seat
-		sc.get(['2_9', '2_11', '2_12','2_13','2_14','2_15','2_10','3_11','3_12','3_13',]).status('unavailable');
-			
+		sc.get(['1_23','2_9', '2_11', '2_12','2_13','2_14','2_15','2_10','3_11','3_12','3_13',]).status('unavailable');
+
 	});
 	//sum total money
 	function recalculateTotal(sc) {
@@ -400,14 +400,14 @@
 		sc.find('selected').each(function () {
 			total += price;
 		});
-				
+
 		return total;
 	}
 
 	function doAnimations( elems ) {
 	//Cache the animationend event in a variable
 		var animEndEv = 'webkitAnimationEnd animationend';
-		
+
 		elems.each(function () {
 			var $this = $(this),
 				$animationType = $this.data('animation');
@@ -416,26 +416,26 @@
 			});
 		});
 	}
-	
-	//Variables on page load 
+
+	//Variables on page load
 	var $myCarousel = $('#headerslider'),
 		$firstAnimatingElems = $myCarousel.find('.item').find("[data-animation ^= 'animated']");
-		
-	//Initialize carousel 
+
+	//Initialize carousel
 	$myCarousel.carousel();
-	
-	//Animate captions in first slide on page load 
+
+	//Animate captions in first slide on page load
 	doAnimations($firstAnimatingElems);
-	
-	//Pause carousel  
+
+	//Pause carousel
 	$myCarousel.carousel('pause');
-	
-	
-	//Other slides to be animated on carousel slide event 
+
+
+	//Other slides to be animated on carousel slide event
 	$myCarousel.on('slide.bs.carousel', function (e) {
 		var $animatingElems = $(e.relatedTarget).find("[data-animation ^= 'animated']");
 		doAnimations($animatingElems);
-	});  
+	});
 	$(window).load(function() {
  	 	// The slider being synced must be initialized first
 		  $('#carousel_coming').flexslider({
@@ -449,7 +449,7 @@
 		    itemMargin: 20,
 		    asNavFor: '#slider_coming'
 		  });
-		 
+
 		  $('#slider_coming').flexslider({
 		    animation: "slide",
 		    controlNav: false,
@@ -479,32 +479,30 @@
         wpc_add_img_bg('.featured-image img', '.featured-image');
         wpc_add_img_bg('.thumb_item .wpc_img', '.thumb_item');
     });
-    
+
     //contact form validate
     $(".contact_form").on("submit", function(e){
-  
+
 	  	var errorMessage  = $(".errorMessage");
 	  	var hasError = false;
-	  
+
 	  	$(".inputValidation").each(function(){
 	  	  	var $this = $(this);
-	    
+
 	    if($this.val() == ""){
 	      hasError = true;
 	      $this.addClass("inputError");
 	      errorMessage.html("<p>Error: Please correct errors above</p>");
 	      e.preventDefault();
 	    }if($this.val() != ""){
-	      	$this.removeClass("inputError"); 
+	      	$this.removeClass("inputError");
 	    }else{
-	      	return true; 
+	      	return true;
 	    }
 	}); //Input
-	  
+
 	  errorMessage.slideDown(700);
-	}); 
+	});
 
 
 })(jQuery);
-
-
