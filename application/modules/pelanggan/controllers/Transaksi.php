@@ -90,7 +90,7 @@ class Transaksi extends MY_Controller
         $this->_rules();
 
         if ($this->form_validation->run() == FALSE) {
-            $this->update($this->input->post('id_transaksi', TRUE));
+            $this->edit($this->input->post('id_transaksi', TRUE));
         } else {
             $data = array(
 		'tanggal_bayar' => $this->input->post('tanggal_bayar',TRUE),

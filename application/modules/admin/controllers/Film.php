@@ -84,9 +84,9 @@ class Film extends MY_Controller{
       $this->_rules();
 
       if ($this->form_validation->run() == FALSE) {
-          $this->create();
+          $this->tambah();
       } else {
-
+        $foto=$this->upload_foto();
           $data = array(
   'id_film' => $this->input->post('id_film',TRUE),
   'judul_film' => $this->input->post('judul_film',TRUE),
@@ -95,7 +95,7 @@ class Film extends MY_Controller{
   'durasi' => $this->input->post('durasi',TRUE),
   'tanggal_mulai' => $this->input->post('tanggal_mulai',TRUE),
   'tanggal_selesai' => $this->input->post('tanggal_selesai',TRUE),
-  'url_gambar' => $this->input->post('url_gambar',TRUE),
+  'url_gambar' =>$foto['file_name'],
     );
 
           $this->Film_model->insert($data);
@@ -122,8 +122,9 @@ class Film extends MY_Controller{
       $this->_rules();
 
       if ($this->form_validation->run() == FALSE) {
-          $this->update($this->input->post('id_film', TRUE));
+          $this->edit($this->input->post('id_film', TRUE));
       } else {
+        $foto=$this->upload_foto();
           $data = array(
   'judul_film' => $this->input->post('judul_film',TRUE),
   'tahun_produksi' => $this->input->post('tahun_produksi',TRUE),
@@ -131,7 +132,7 @@ class Film extends MY_Controller{
   'durasi' => $this->input->post('durasi',TRUE),
   'tanggal_mulai' => $this->input->post('tanggal_mulai',TRUE),
   'tanggal_selesai' => $this->input->post('tanggal_selesai',TRUE),
-  'url_gambar' => $this->input->post('url_gambar',TRUE),
+  'url_gambar' =>$foto['file_name'],
     );
 
           $this->Film_model->update($this->input->post('id_film', TRUE), $data);
@@ -162,6 +163,17 @@ class Film extends MY_Controller{
       }
   }
 
+  public function upload_foto(){
+  $config['upload_path']          = './assets/film-image';
+  $config['allowed_types']        = 'gif|jpg|png|jpeg';
+  $config['encrypt_name'] = TRUE;
+  //$config['max_size']             = 100;
+  //$config['max_width']            = 1024;
+  //$config['max_height']           = 768;
+  $this->load->library('upload', $config);
+  $this->upload->do_upload('url_gambar');
+  return $this->upload->data();
+  }
 
 function cekdb(){
   // $datafilm=$this->Film_model->get_all();//panggil ke modell
@@ -177,7 +189,6 @@ $this->form_validation->set_rules('sinopsis', 'sinopsis', 'trim|required');
 $this->form_validation->set_rules('durasi', 'durasi', 'trim|required');
 $this->form_validation->set_rules('tanggal_mulai', 'tanggal mulai', 'trim|required');
 $this->form_validation->set_rules('tanggal_selesai', 'tanggal selesai', 'trim|required');
-$this->form_validation->set_rules('url_gambar', 'url gambar', 'trim|required');
 
 $this->form_validation->set_rules('id_film', 'id_film', 'trim');
 $this->form_validation->set_error_delimiters('<span class="text-danger">', '</span>');

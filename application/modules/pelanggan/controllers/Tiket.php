@@ -154,7 +154,7 @@ class Tiket extends MY_Controller
         $this->_rules();
 
         if ($this->form_validation->run() == FALSE) {
-            $this->update($this->input->post('id_tiket', TRUE));
+            $this->edit($this->input->post('id_tiket', TRUE));
         } else {
             $data = array(
 		'id_transaksi' => $this->input->post('id_transaksi',TRUE),

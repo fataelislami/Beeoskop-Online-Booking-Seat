@@ -93,7 +93,7 @@ class User extends MY_Controller
         $this->_rules();
 
         if ($this->form_validation->run() == FALSE) {
-            $this->update($this->input->post('username', TRUE));
+            $this->edit($this->input->post('username', TRUE));
         } else {
             $data = array(
 		'password' => md5($this->input->post('password',TRUE)),

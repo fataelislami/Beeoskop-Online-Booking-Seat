@@ -8,7 +8,7 @@
                       <h6 class="card-subtitle">Export data to Copy, CSV, Excel, PDF & Print</h6>
                   </div>
                   <div class="col-md-6 text-right">
-                      <?php echo anchor(site_url($module.'/tiket/create'), '+ Tambah Data', 'class="btn btn-primary"'); ?>
+                      <?php echo anchor(site_url(), '+ Pesan Tiket', 'class="btn btn-primary"'); ?>
       	    </div>
               </div>
 
@@ -30,9 +30,6 @@
                                 <td><?php echo $d->$df ?></td>
                               <?php endforeach; ?>
                                 <td>
-                                <a href="<?php echo base_url().$module?>/tiket/edit/<?php echo $d->id_tiket ?>">
-                                        <button class="btn btn-success waves-effect waves-light m-r-10">Edit</button>
-                                    </a>
                                     <a href="<?php echo base_url().$module?>/tiket/delete/<?php echo $d->id_tiket ?>">
                                       <button class="btn btn-danger waves-effect waves-light m-r-10" >Delete</button>
                                     </a>

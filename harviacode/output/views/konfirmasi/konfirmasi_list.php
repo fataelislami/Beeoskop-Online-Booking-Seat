@@ -1,17 +1,14 @@
-<?php if($this->session->flashdata('errorMessage')) {
-  $flashMessage=$this->session->flashdata('flashMessage');
-echo "<script>alert('$flashMessage')</script>";
- } ?>
 <div class="row">
     <div class="col-12">
         <div class="card">
             <div class="card-body">
               <div class="row">
                   <div class="col-md-6">
-                      <h4 class="card-title">Data Transaksi</h4>
+                      <h4 class="card-title">Data Konfirmasi</h4>
                       <h6 class="card-subtitle">Export data to Copy, CSV, Excel, PDF & Print</h6>
                   </div>
                   <div class="col-md-6 text-right">
+                      <?php echo anchor(site_url($module.'/konfirmasi/create'), '+ Tambah Data', 'class="btn btn-primary"'); ?>
       	    </div>
               </div>
 
@@ -20,23 +17,23 @@ echo "<script>alert('$flashMessage')</script>";
                     <table id="example23" class="display nowrap table table-hover table-striped table-bordered" cellspacing="0" width="100%">
                         <thead>
                             <tr>
-                              <?php foreach ($datafield as $d): ?>
-                                <th><?php echo str_replace("_"," ",$d) ?></th>
-                              <?php endforeach; ?>
+                                <?php foreach ($datafield as $d): ?>
+                                  <th><?php echo str_replace("_"," ",$d) ?></th>
+                                <?php endforeach; ?>
                                 <th>aksi</th>
                             </tr>
                         </thead>
                         <tbody>
-                          <?php foreach ($datatransaksi as $d): ?>
+                          <?php foreach ($datakonfirmasi as $d): ?>
                             <tr>
                               <?php foreach ($datafield as $df): ?>
                                 <td><?php echo $d->$df ?></td>
                               <?php endforeach; ?>
                                 <td>
-                                <a href="<?php echo base_url().$module?>/konfirmasi/create/<?php echo $d->id_transaksi ?>">
-                                        <button class="btn btn-success waves-effect waves-light m-r-10">Konfirmasi</button>
+                                <a href="<?php echo base_url().$module?>/konfirmasi/edit/<?php echo $d->id_konfirmasi ?>">
+                                        <button class="btn btn-success waves-effect waves-light m-r-10">Edit</button>
                                     </a>
-                                    <a href="<?php echo base_url().$module?>/transaksi/delete/<?php echo $d->id_transaksi ?>">
+                                    <a href="<?php echo base_url().$module?>/konfirmasi/delete/<?php echo $d->id_konfirmasi ?>">
                                       <button class="btn btn-danger waves-effect waves-light m-r-10" >Delete</button>
                                     </a>
                                 </td>

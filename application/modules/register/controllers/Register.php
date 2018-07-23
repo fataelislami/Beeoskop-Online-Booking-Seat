@@ -34,7 +34,7 @@ class Register extends MY_Controller{
       $sql = $this->Dbs->check("user",$where);
       $check=$sql->num_rows();
   		if($check > 0){
-        $this->session->set_flashdata('errorMessage', 'Username sudah pernah dipakai');
+        $this->session->set_flashdata('errorMessage', 'Username sudah pernah dipakai,silahkan gunakan username lain');
         redirect(base_url('register'));
   		}else{
         $this->User_model->insert($data);

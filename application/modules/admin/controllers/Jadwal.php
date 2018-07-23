@@ -87,7 +87,7 @@ class Jadwal extends MY_Controller
         $this->_rules();
 
         if ($this->form_validation->run() == FALSE) {
-            $this->update($this->input->post('id_jadwal', TRUE));
+            $this->edit($this->input->post('id_jadwal', TRUE));
         } else {
             $data = array(
 		'id_studio' => $this->input->post('id_studio',TRUE),

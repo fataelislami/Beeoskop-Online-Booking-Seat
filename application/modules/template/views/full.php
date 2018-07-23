@@ -134,15 +134,7 @@
                             <a class="nav-link dropdown-toggle text-muted waves-effect waves-dark" href="" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"><img src="#" alt="user" class="profile-pic" /></a>
                             <div class="dropdown-menu dropdown-menu-right scale-up">
                                 <ul class="dropdown-user">
-                                    <li>
-                                        <div class="dw-user-box">
-                                            <div class="u-img"><img src="#" alt="user"></div>
-                                            <div class="u-text">
-                                                <h4>NAME</h4>
-                                                <p class="text-muted">USERNAME</p><a href="/profile" class="btn btn-rounded btn-danger btn-sm">View Profile</a></div>
-                                        </div>
-                                    </li>
-                                    <li role="separator" class="divider"></li>
+
                                     <li><a href="<?php echo base_url() ?>login/logout"><i class="fa fa-power-off"></i> Logout</a></li>
                                 </ul>
                             </div>
@@ -173,7 +165,7 @@
                     <!-- User profile text-->
                     <div class="profile-text"> <a href="#" class="dropdown-toggle link u-dropdown" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true"><?php echo $this->session->userdata('name');; ?><span class="caret"></span></a>
                         <div class="dropdown-menu animated flipInY">
-                            <a href="#" class="dropdown-item"><i class="ti-user"></i> My Profile</a>
+                            <!-- <a href="#" class="dropdown-item"><i class="ti-user"></i> My Profile</a> -->
 
                             <div class="dropdown-divider"></div> <a href="login.html" class="dropdown-item"><i class="fa fa-power-off"></i> Logout</a>
                         </div>
@@ -186,14 +178,7 @@
             </div>
             <!-- End Sidebar scroll-->
             <!-- Bottom points-->
-            <div class="sidebar-footer">
-                <!-- item-->
-                <a href="" class="link" data-toggle="tooltip" title="Settings"><i class="ti-settings"></i></a>
-                <!-- item-->
-                <a href="" class="link" data-toggle="tooltip" title="Email"><i class="mdi mdi-gmail"></i></a>
-                <!-- item-->
-                <a href="" class="link" data-toggle="tooltip" title="Logout"><i class="mdi mdi-power"></i></a>
-            </div>
+            
             <!-- End Bottom points-->
         </aside>
         <!-- ============================================================== -->

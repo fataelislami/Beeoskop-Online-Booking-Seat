@@ -86,7 +86,7 @@ class Genre extends MY_Controller
         $this->_rules();
 
         if ($this->form_validation->run() == FALSE) {
-            $this->update($this->input->post('id_genre', TRUE));
+            $this->edit($this->input->post('id_genre', TRUE));
         } else {
             $data = array(
 		'nama_genre' => $this->input->post('nama_genre',TRUE),

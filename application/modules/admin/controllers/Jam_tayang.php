@@ -86,7 +86,7 @@ class Jam_tayang extends MY_Controller
         $this->_rules();
 
         if ($this->form_validation->run() == FALSE) {
-            $this->update($this->input->post('id_jam_tayang', TRUE));
+            $this->edit($this->input->post('id_jam_tayang', TRUE));
         } else {
             $data = array(
 		'jam_tayang' => $this->input->post('jam_tayang',TRUE),

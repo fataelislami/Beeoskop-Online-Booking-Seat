@@ -5,6 +5,12 @@
             <a class="waves-effect waves-dark" href="<?php echo base_url()?>admin"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard</span></a>
         </li>
         <li>
+            <a class="waves-effect waves-dark" href="<?php echo base_url()?>admin/konfirmasi"><i class="mdi mdi-gauge"></i><span class="hide-menu">Konfirmasi</span></a>
+        </li>
+        <li>
+            <a class="waves-effect waves-dark" href="<?php echo base_url()?>admin/transaksi"><i class="mdi mdi-gauge"></i><span class="hide-menu">Transaksi User</span></a>
+        </li>
+        <li>
             <a class="waves-effect waves-dark" href="<?php echo base_url()?>admin/film"><i class="mdi mdi-gauge"></i><span class="hide-menu">Film</span></a>
         </li>
         <li>

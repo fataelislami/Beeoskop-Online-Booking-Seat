@@ -3,7 +3,7 @@
     <div class="card">
         <div class="card-body">
             <h4 class="card-title">Tambah Film</h4>
-            <form class="form-material m-t-40" method="post" action="<?php echo base_url() ?>admin/film/create_action">
+            <form class="form-material m-t-40" method="post" action="<?php echo base_url() ?>admin/film/create_action" enctype="multipart/form-data">
                <!-- //START -->
                 <div class="form-group">
                         <label>Id Film</label>
@@ -34,8 +34,8 @@
                         <input type="date" name="tanggal_selesai" class="form-control">
                 </div>
                 <div class="form-group">
-                        <label>Url Poster</label>
-                        <input type="text" name="url_gambar" class="form-control">
+                        <label>Upload Gambar</label>
+                        <input type="file" name="url_gambar" class="form-control">
                 </div>
                 <div class="form-group" id="genre1">
 

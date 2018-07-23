@@ -106,7 +106,7 @@ $string .= "\n\t    );
         \$this->_rules();
 
         if (\$this->form_validation->run() == FALSE) {
-            \$this->update(\$this->input->post('$pk', TRUE));
+            \$this->edit(\$this->input->post('$pk', TRUE));
         } else {
             \$data = array(";
 foreach ($non_pk as $row) {

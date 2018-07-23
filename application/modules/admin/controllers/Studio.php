@@ -87,7 +87,7 @@ class Studio extends MY_Controller
         $this->_rules();
 
         if ($this->form_validation->run() == FALSE) {
-            $this->update($this->input->post('id_studio', TRUE));
+            $this->edit($this->input->post('id_studio', TRUE));
         } else {
             $data = array(
 		'nama_studio' => $this->input->post('nama_studio',TRUE),

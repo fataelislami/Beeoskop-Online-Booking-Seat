@@ -87,7 +87,7 @@ class Kursi extends MY_Controller
         $this->_rules();
 
         if ($this->form_validation->run() == FALSE) {
-            $this->update($this->input->post('id_kursi', TRUE));
+            $this->edit($this->input->post('id_kursi', TRUE));
         } else {
             $data = array(
 		'no_baris' => $this->input->post('no_baris',TRUE),
