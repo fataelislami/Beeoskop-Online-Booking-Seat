@@ -1054,9 +1054,11 @@
          <div class="container">
             <div class="row order-content">
               <?php if($this->session->userdata('status')!='login'){?>
+                <a href="javascript:;" class="close-window pull-right"><i class="fa fa-times"></i></a>
                 <div class="col-md-12">
                   Anda Belum Melakukan Login, Silahkan Login Terlebih Dahulu <a href="<?php echo base_url();?>login">LOGIN</a>,Atau lakukan pendaftaran disini <a href="<?php echo base_url();?>register">DAFTAR</a>
                 </div>
+
              <?php } else{ ?>
                <div class="col-sm-8 col-xs-12 seat_content ph0">
                   <h2>order a ticket</h2>
