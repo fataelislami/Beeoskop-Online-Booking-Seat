@@ -16,8 +16,9 @@ class Tiket_model extends CI_Model
     }
 
     // get all
-    function get_all()
+    function get_all($username)
     {
+        $this->db->where('username', $username);
         $this->db->order_by($this->id, $this->order);
         return $this->db->get($this->table)->result();
     }

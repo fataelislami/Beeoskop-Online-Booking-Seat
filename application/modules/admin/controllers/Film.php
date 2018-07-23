@@ -163,6 +163,8 @@ class Film extends MY_Controller{
       }
   }
 
+  
+
   public function upload_foto(){
   $config['upload_path']          = './assets/film-image';
   $config['allowed_types']        = 'gif|jpg|png|jpeg';

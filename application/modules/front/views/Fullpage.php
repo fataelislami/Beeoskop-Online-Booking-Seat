@@ -1063,7 +1063,7 @@
                <div class="col-sm-8 col-xs-12 seat_content ph0">
                   <h2>order a ticket</h2>
                   <div class="entry-order-content">
-                    <form id="msform" action="<?php echo base_url()?>pelanggan/tiket/testing" method="post" name="msform">
+                    <form id="msform" action="<?php echo base_url()?>pelanggan/tiket/proses" method="post" name="msform">
                         <!-- fieldsets -->
                         <fieldset>
                            <div class="wpc-content">

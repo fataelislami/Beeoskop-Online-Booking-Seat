@@ -21,7 +21,7 @@ class Transaksi extends MY_Controller
     public function index()
     {
 
-      $datatransaksi=$this->Transaksi_model->get_all();//panggil ke modell
+      $datatransaksi=$this->Transaksi_model->get_all($this->session->userdata('username'));//panggil ke modell
       $datafield=$this->Transaksi_model->get_field();//panggil ke modell
 
       $data = array(

@@ -21,7 +21,7 @@ class Tiket extends MY_Controller
     public function index()
     {
 
-      $datatiket=$this->Tiket_model->get_all();//panggil ke modell
+      $datatiket=$this->Tiket_model->get_all($this->session->userdata('username'));//panggil ke modell
       $datafield=$this->Tiket_model->get_field();//panggil ke modell
 
       $data = array(
@@ -62,7 +62,7 @@ class Tiket extends MY_Controller
     }
 
     //ADD TESTING
-    function testing(){
+    function proses(){
       if(isset($_POST['submit'])){
         $id_studio=$_POST['studio'];
         $id_film=$_POST['movie'];
@@ -107,10 +107,9 @@ class Tiket extends MY_Controller
           // echo "Id_Jadwal : ".$id_jadwal->id_jadwal."<br>";
           // echo "Tanggal_Tayang : ".$tanggal_tayang."<br>";
           // echo "Username  : ".$username."<br>-----<br>";
-          echo "Sukses";
         }
         //PROSES INSERT TIKET
-
+        redirect(site_url('pelanggan/transaksi'));
         // var_dump($dataKursi);
       }
     }
