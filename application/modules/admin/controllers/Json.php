@@ -42,6 +42,41 @@ class Json extends MY_Controller{
     echo $json;
   }
 
+
+//Jadwal
+  function jadwal(){
+    $this->load->model(array('Jadwal_model'));
+    $datajadwal=$this->Jadwal_model->getJoin()->result();//panggil ke modell
+    $json=json_encode($datajadwal);
+    echo $json;
+  }
+  function getJudulFilm(){
+    $this->load->model(array('Jadwal_model'));
+    $datajadwal=$this->Jadwal_model->getJudulFilm()->result();//panggil ke modell
+    $json=json_encode($datajadwal);
+    echo $json;
+  }
+
+  function getJudulFilmbyId($id_film){
+    $this->load->model(array('Jadwal_model'));
+    $datajadwal=$this->Jadwal_model->getJudulFilmbyId($id_film)->result();//panggil ke modell
+    $json=json_encode($datajadwal);
+    echo $json;
+  }
+  function getJamFilm($id_film,$id_studio){
+    $this->load->model(array('Jadwal_model'));
+    $datajadwal=$this->Jadwal_model->getJamFilm($id_film,$id_studio)->result();//panggil ke modell
+    $json=json_encode($datajadwal);
+    echo $json;
+  }
+  function getStudiobyFilm($id_film){
+    $this->load->model(array('Jadwal_model'));
+    $dataStudio=$this->Jadwal_model->getStudiobyFilm($id_film)->result();//panggil ke modell
+    $json=json_encode($dataStudio);
+    echo $json;
+  }
+//Jadwal
+
   function genrebyfilm($id){
     $this->load->model(array('Film_genre'));
     $datagenre=$this->Film_genre->genrebyfilm($id);//panggil ke modell

@@ -21,4 +21,13 @@ class Front extends MY_Controller{
     echo "ini homepage";
   }
 
+  function transaksi(){
+    if(isset($_GET['submit'])){
+      echo $_GET['movie'];
+      echo $_GET['studio'];
+      echo $_GET['tanggal'];
+      echo $_GET['waktu'];
+    }
+  }
+
 }

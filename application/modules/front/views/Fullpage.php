@@ -35,6 +35,7 @@
                         <img src="<?php echo base_url()?>frontendassets/images/user.png" class="user" alt="user">
                      </div>
                      <div class="header_ticket">
+
                         <a href="#order" class="order_btn">My tickets</a>
                         <span>3</span>
                      </div>
@@ -1057,36 +1058,25 @@
                <div class="col-sm-8 col-xs-12 seat_content ph0">
                   <h2>order a ticket</h2>
                   <div class="entry-order-content">
-                     <form id="msform" name="msform">
+                    <form id="msform" action="<?php echo base_url()?>pelanggan/tiket/testing" method="post" name="msform">
                         <!-- fieldsets -->
                         <fieldset>
                            <div class="wpc-content">
-                              <h3>location</h3>
-                              <select name="location">
-                                 <option>CGV</option>
-                                 <option>XXI </option>
+                              <h3>Movie</h3>
+                              <select name="movie" id="movie">
+                              </select>
+                              <h3>Studio</h3>
+                              <select name="studio" id="studio">
+                              </select>
+                              <h3 class="tanggal">Date</h3>
+                              <select name="tanggal" id="tanggal">
+                              </select>
+                              <h3 class="mt3">TIME</h3>
+                              <select name="waktu" id="waktu">
 
                               </select>
-                              <h3 class="mt3">Movie</h3>
-                              <select>
-                                 <option>Dead pool</option>
-                                 <option>THE BATTLE OF ALGIERS (DI ALGERI)</option>
-                                 <option>LORD OF THE RINGS: THE RETURN OF THE KINGS</option>
-                                 <option>Tenguu Cinema Tysons corner</option>
-                              </select>
-                              <h3 class="mt3">Date</h3>
-                              <input type='date' class="datetime"/>
-                              <h3 class="mt3">TIME</h3>
-                              <ul class="order-date">
-                                 <li><a href="javascript:;"><i>11:50</i></a></li>
-                                 <li><a href="javascript:;"><i>13:40</i></a></li>
-                                 <li><a href="javascript:;"><i>16:35</i></a></li>
-                                 <li><a href="javascript:;"><i>17:30</i></a></li>
-                                 <li><a href="javascript:;"><i>19:50</i></a></li>
-                                 <li><a href="javascript:;"><i>21:10</i></a></li>
-                              </ul>
                            </div>
-                           <input type="button" name="next" class="next action-button" value="Next" />
+                           <input type="button" id="nextProses" name="next" class="next action-button" value="Next" />
                         </fieldset>
                         <fieldset class="seat-content">
                            <div class="wpc-content">
@@ -1094,10 +1084,13 @@
                               <div id="seat-map"></div>
                               <div id="legend"></div>
                            </div>
-                           <input type="button" name="previous" class="action-button previous" value="Previous" />
-                           <input type="submit" name="submit" class="submit action-button" value="Submit" />
+                           <div id="checkboxKursi">
+
+                           </div>
+                           <a href="<?php echo base_url() ?>"><input type="button" href="<?php echo base_url()?>" class="action-button" value="Reset" /></a>
+                           <input type="submit" name="submit" class="action-button" value="Submit" />
                         </fieldset>
-                     </form>
+                      </form>
                   </div>
                </div>
                <div class="col-sm-4 col-xs-12 order_sidebar ph0">
@@ -1117,10 +1110,123 @@
             </div>
          </div>
       </div>
+
       <!-- Include jQuery and Scripts -->
       <script type="text/javascript" src="<?php echo base_url()?>frontendassets/js/jquery.min.js"></script>
       <script type="text/javascript" src="<?php echo base_url()?>frontendassets/js/packages.min.js"></script>
-      <script type="text/javascript" src="<?php echo base_url()?>frontendassets/js/scripts.js"></script>
+
+      <script type="text/javascript">
+      $(document).ready(function(){
+        function load(){
+          var settings = {
+              "async": true,
+              "crossDomain": true,
+              "url": "http://localhost/bioskop/admin/json/getJudulFilm",
+              "method": "GET",
+            }
+
+            $.ajax(settings).done(function (response) {
+              items=JSON.parse(response);
+              var akhir=items.length;
+              $("#movie").html('<option>--</option>');
+              for(var i=0;i<=akhir;i++){
+                $("#movie").append('<option value="'+items[i].id_film+'">'+items[i].judul_film+'</option')
+              }
+            });
+        }
+        load();
+        function tanggal(value){//ambil tanggal dengan perulangan value, nilai fungsi sebagai array dar [tanggal,tanggal+hari]
+          var today = new Date();
+          var dd = today.getDate()+value;
+          var hari =today.getDay()+value;
+          var hariArray=["Minggu","Senin","Selasa","Rabu","Kamis","Jumat","Sabtu"];
+          var mm = today.getMonth()+1; //January is 0!
+          var yyyy = today.getFullYear();
+
+          if(dd<10) {
+              dd = '0'+dd
+          }
+
+          if(mm<10) {
+              mm = '0'+mm
+          }
+
+          today = yyyy + '-' + mm + '-' + dd;
+          todaywithHari = hariArray[hari] + '-' + mm + '-' + yyyy;
+          var returnValue=[today,todaywithHari]
+          return returnValue;
+        }
+        $("#movie").change(function(){
+          var id_film=$(this).val();
+          var settings = {
+              "async": true,
+              "crossDomain": true,
+              "url": "http://localhost/bioskop/admin/json/getStudiobyFilm/"+id_film,
+              "method": "GET",
+            }
+
+            $.ajax(settings).done(function (response) {
+              items=JSON.parse(response);
+              var akhir=items.length;
+              $("#studio").html('<option>--</option>');
+              for(var i=0;i<=akhir;i++){
+                $("#studio").append('<option value="'+items[i].id_studio+'">'+items[i].nama_studio+'</option>');
+              }
+            });
+            var setting2 = {
+                "async": true,
+                "crossDomain": true,
+                "url": "http://localhost/bioskop/admin/json/getJudulFilmbyId/"+id_film,
+                "method": "GET",
+              }
+
+              $.ajax(setting2).done(function (response2) {
+                items2=JSON.parse(response2);
+                var akhir=items2[0].DurasiHari;
+                var d=new Date("yyyy-mm-dd");
+                $("#tanggal").html('<option>--</option>');
+                for(var i=0;i<3;i++){
+                  $("#tanggal").append('<option value="'+tanggal(i)[0]+'">'+tanggal(i)[1]+'</option>');
+                }
+              });
+        });
+
+
+        $("#studio").change(function(){
+          var id_film=$("#movie").val();
+          var id_studio=$("#studio").val();
+          var settings = {
+              "async": true,
+              "crossDomain": true,
+              "url": "http://localhost/bioskop/admin/json/getJamFilm/"+id_film+"/"+id_studio,
+              "method": "GET",
+            }
+
+            $.ajax(settings).done(function (response) {
+              items=JSON.parse(response);
+              var akhir=items.length;
+              $("#waktu").html('<option>--</option>');
+              for(var i=0;i<=akhir;i++){
+                $("#waktu").append('<option value="'+items[i].id_jam_tayang+'">'+items[i].jam_tayang+'</option>');
+              }
+            });
+        });
+
+      });
+      </script>
+      <script type="text/javascript">
+      var kursiSold;
+      // Mengirim nilai ke script eksternal
+
+
+
+        kursiSold=['1_3'];
+        var harga=35000;
+      </script>
+      <script type="text/javascript" src="<?php echo base_url()?>frontendassets/js/scripts.js">
+
+      </script>
+
       <!-- jQuery easing plugin -->
    </body>
 </html>

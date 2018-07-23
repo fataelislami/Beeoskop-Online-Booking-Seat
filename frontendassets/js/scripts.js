@@ -334,11 +334,12 @@
 	    }
 	});
 
-	var price = 35000; //price
+	var price = harga; //price
 	$(document).ready(function() {
 		var $cart = $('#selected-seats'), //Sitting Area
 		$counter = $('#counter'), //Votes
 		$total = $('#total'); //Total money
+
 
 		var sc = $('#seat-map').seatCharts({
 			map: [  //Seating chart
@@ -366,12 +367,14 @@
 				if (this.status() == 'available') { //optional seat
 					$('<li>R'+(this.settings.row+1)+' S'+this.settings.label+'</li>')
 						.attr('id', 'cart-item-'+this.settings.id)
+						.attr('name', 'datakursi[]')
+						.attr('value', this.settings.id)
 						.data('seatId', this.settings.id)
 						.appendTo($cart);
-					console.log($cart);
+
 					$counter.text(sc.find('selected').length+1);
 					$total.text(recalculateTotal(sc)+price);
-
+					$("#checkboxKursi").append('<input id="checkbox-items-'+this.settings.id+'" type="hidden" name="kursi[]" value="'+this.settings.id+'" checked>');
 					return 'selected';
 				} else if (this.status() == 'selected') { //Checked
 						//Update Number
@@ -381,6 +384,7 @@
 
 						//Delete reservation
 						$('#cart-item-'+this.settings.id).remove();
+						$('#checkbox-items-'+this.settings.id).remove();
 						//optional
 						return 'available';
 				} else if (this.status() == 'unavailable') { //sold
@@ -391,7 +395,47 @@
 			}
 		});
 		//sold seat
-		sc.get(['1_23','2_9', '2_11', '2_12','2_13','2_14','2_15','2_10','3_11','3_12','3_13',]).status('unavailable');
+		$("#nextProses").click(function(){
+			var idstudio=$("#studio").val();
+			var idfilm=$("#movie").val();
+			var idjamtayang=$("#waktu").val();
+			var tanggal_tayang=$("#tanggal").val();
+			var settings = {
+							"async": true,
+							"crossDomain": true,
+							"url": "http://localhost/bioskop/pelanggan/json/getidjadwal/"+idstudio+"/"+idfilm+"/"+idjamtayang,
+							"method": "GET",
+							"headers": {
+								"Cache-Control": "no-cache",
+								"Postman-Token": "bfec8ba3-b2a4-402c-898f-2dd79879ad73"
+							}
+						}
+
+						$.ajax(settings).done(function (response) {
+							items=JSON.parse(response);
+							var idJadwal=items.id_jadwal;
+							// return response;
+							var settings2 = {
+									"async": true,
+									"crossDomain": true,
+									"url": "http://localhost/bioskop/pelanggan/json/get_kursi/"+idJadwal+"/"+tanggal_tayang,
+									"method": "GET",
+									"headers": {
+										"Cache-Control": "no-cache",
+										"Postman-Token": "479ab9f5-bb08-49ed-bb8c-e5ace0129f9d"
+									}
+								}
+
+								$.ajax(settings2).done(function (response2) {
+									// var kursiSold=['1_3'];
+									items2=JSON.parse(response2);
+
+									sc.get(items2).status('unavailable');
+								});
+						});
+			});
+
+		//sc.get(['1_2','2_9', '2_11', '2_12','2_13','2_14','2_15','2_10','3_11','3_12','3_13']).status('unavailable');
 
 	});
 	//sum total money

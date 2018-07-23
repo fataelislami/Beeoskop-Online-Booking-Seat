@@ -8,7 +8,7 @@ class Jadwal_model extends CI_Model
 
     public $table = 'jadwal';
     public $id = 'id_jadwal';
-    public $order = 'DESC';
+    public $order = 'ASC';
 
     function __construct()
     {
@@ -37,6 +37,43 @@ class Jadwal_model extends CI_Model
 
     function getJoin(){
       $sql="SELECT * FROM `jadwal` INNER JOIN `studio` ON `jadwal`.`id_studio`=`studio`.`id_studio` INNER JOIN `film` ON `jadwal`.`id_film`=`film`.`id_film` INNER JOIN `jam_tayang` ON `jadwal`.`id_jam_tayang`=`jam_tayang`.`id_jam_tayang`";
+      return $this->db->query($sql);
+    }
+
+    function getJamFilm($id_film,$id_studio){
+      $sql="SELECT *
+      FROM `jadwal`  INNER JOIN `studio` ON `jadwal`.`id_studio`=`studio`.`id_studio`
+      INNER JOIN `film` ON `jadwal`.`id_film`=`film`.`id_film`
+      INNER JOIN `jam_tayang` ON `jadwal`.`id_jam_tayang`=`jam_tayang`.`id_jam_tayang`
+      WHERE `jadwal`.`id_film`='$id_film' and `jadwal`.`id_studio`='$id_studio'";
+      return $this->db->query($sql);
+    }
+
+    function getJudulFilm(){//ambil film yang didalam rentang waktu tanggal selesai dengan tanggal mulai
+      $sql="SELECT distinct `jadwal`.`id_film`,`film`.`judul_film`,`film`.`tanggal_selesai`,`film`.`tanggal_mulai`,DATEDIFF(`film`.`tanggal_selesai`,`film`.`tanggal_mulai`) as Hari,DATEDIFF(`film`.`tanggal_selesai`,NOW()) as DurasiHari FROM `jadwal`
+      INNER JOIN `studio` ON `jadwal`.`id_studio`=`studio`.`id_studio`
+      INNER JOIN `film` ON `jadwal`.`id_film`=`film`.`id_film`
+      INNER JOIN `jam_tayang` ON `jadwal`.`id_jam_tayang`=`jam_tayang`.`id_jam_tayang`
+      WHERE DATEDIFF(`film`.`tanggal_selesai`,NOW()) >0";
+      return $this->db->query($sql);
+    }
+
+    function getJudulFilmbyId($id_film){
+      $sql="SELECT distinct `jadwal`.`id_film`,`film`.`judul_film`,`film`.`tanggal_selesai`,`film`.`tanggal_mulai`,DATEDIFF(`film`.`tanggal_selesai`,`film`.`tanggal_mulai`) as Hari,DATEDIFF(`film`.`tanggal_selesai`,NOW()) as DurasiHari FROM `jadwal`
+      INNER JOIN `studio` ON `jadwal`.`id_studio`=`studio`.`id_studio`
+      INNER JOIN `film` ON `jadwal`.`id_film`=`film`.`id_film`
+      INNER JOIN `jam_tayang` ON `jadwal`.`id_jam_tayang`=`jam_tayang`.`id_jam_tayang`
+      WHERE DATEDIFF(`film`.`tanggal_selesai`,NOW()) >0 AND `jadwal`.`id_film`='$id_film'";
+      return $this->db->query($sql);
+    }
+
+    function getStudiobyFilm($id_film){
+      $sql="SELECT distinct `jadwal`.`id_studio`,`nama_studio`
+      FROM `jadwal`
+      INNER JOIN `studio` ON `jadwal`.`id_studio`=`studio`.`id_studio`
+      INNER JOIN `film` ON `jadwal`.`id_film`=`film`.`id_film`
+      INNER JOIN `jam_tayang` ON `jadwal`.`id_jam_tayang`=`jam_tayang`.`id_jam_tayang`
+      WHERE `jadwal`.`id_film`='$id_film'";
       return $this->db->query($sql);
     }
 
