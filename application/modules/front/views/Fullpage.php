@@ -31,13 +31,11 @@
                   </div>
                   <div class="col-md-4 col-md-offset-2 col-sm-6 col-xs-8 phl0">
                      <div class="header_author">
-                        <a href="#">Admin</a>
-                        <img src="<?php echo base_url()?>frontendassets/images/user.png" class="user" alt="user">
+                        <a href="#">HOME</a>
                      </div>
                      <div class="header_ticket">
 
-                        <a href="#order" class="order_btn">My tickets</a>
-                        <span>3</span>
+                        <a href="#order" class="order_btn">Order Tiket</a>
                      </div>
                      <a href="javascript:;" id="header-search"></a>
                      <div class="button_container" id="toggle">
@@ -1055,6 +1053,11 @@
       <div id="order">
          <div class="container">
             <div class="row order-content">
+              <?php if($this->session->userdata('status')!='login'){?>
+                <div class="col-md-12">
+                  Anda Belum Melakukan Login, Silahkan Login Terlebih Dahulu <a href="<?php echo base_url();?>login">LOGIN</a>
+                </div>
+             <?php } else{ ?>
                <div class="col-sm-8 col-xs-12 seat_content ph0">
                   <h2>order a ticket</h2>
                   <div class="entry-order-content">
@@ -1094,19 +1097,23 @@
                   </div>
                </div>
                <div class="col-sm-4 col-xs-12 order_sidebar ph0">
-                  <h2>Your Information</h2>
+                  <h2>Informasi</h2>
                   <div class="order-details">
-                     <span> Location:</span>
-                     <p id="locationp">CGV Bandung Electronic Center</p>
-                     <span>Time:</span>
-                     <p>2016.3.8 18:30</p>
-                     <span>Seat: </span>
+                     <span> Lokasi:</span>
+                     <p id="locationp">Bioskop SI</p>
+                     <span>Tanggal:</span>
+                     <p id="timesummary"></p>
+                     <span>Pukul:</span>
+                     <p id="waktusummary"></p>
+                     <span>Kursi: </span>
                      <ul id="selected-seats"></ul>
-                     <div>Tickets: <span id="counter">0</span></div>
+                     <div>Tiket: <span id="counter">0</span></div>
                      <div>Total: <b>Rp.<span id="total">0</span></b></div>
                   </div>
                   <a href="javascript:;" class="close-window"><i class="fa fa-times"></i></a>
                </div>
+             <?php } ?>
+
             </div>
          </div>
       </div>
@@ -1211,16 +1218,17 @@
               }
             });
         });
+        $("#tanggal").change(function(){
+          $("#timesummary").text($("#tanggal option:selected").text());
+        });
+        $("#waktu").change(function(){
+          $("#waktusummary").text($("#waktu option:selected").text());
+        });
 
       });
       </script>
       <script type="text/javascript">
-      var kursiSold;
-      // Mengirim nilai ke script eksternal
 
-
-
-        kursiSold=['1_3'];
         var harga=35000;
       </script>
       <script type="text/javascript" src="<?php echo base_url()?>frontendassets/js/scripts.js">
