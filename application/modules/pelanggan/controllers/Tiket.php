@@ -10,6 +10,12 @@ class Tiket extends MY_Controller
         parent::__construct();
         $this->load->model(array('Tiket_model','Transaksi_model'));
         $this->load->library('form_validation');
+        if($this->session->userdata('status')!='login'){
+          redirect(base_url('login'));
+        }
+        if($this->session->userdata('role')!=2){
+          redirect(redirect($_SERVER['HTTP_REFERER']));
+        }
     }
 
     public function index()

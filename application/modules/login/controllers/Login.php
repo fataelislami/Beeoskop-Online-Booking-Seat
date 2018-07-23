@@ -32,7 +32,7 @@ class Login extends MY_Controller{
         $level='admin';
       }
       if($role==2){
-        $level='pemesan';
+        $level='pelanggan';
       }
 
 			$data_session = array(//Data yang akan disimpan kedalam session
@@ -48,13 +48,13 @@ class Login extends MY_Controller{
       if($role==1){
         redirect(base_url("admin"));
       }else if($role==2){
-        redirect(base_url("pemesan"));
+        redirect(base_url("pelanggan"));
       }else{
         redirect(base_url());
       }
 
 		}else{
-      $data=array('errorMessage'=>'Username dan Password salah');
+      $this->session->set_flashdata('flashMessage', 'Username dan Password Salah');
       redirect(base_url('login'));
 		}
   }

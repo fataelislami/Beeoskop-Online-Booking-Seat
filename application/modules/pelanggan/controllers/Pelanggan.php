@@ -7,6 +7,12 @@ class Pelanggan extends MY_Controller{
   {
     parent::__construct();
     //Codeigniter : Write Less Do More
+    if($this->session->userdata('status')!='login'){
+      redirect(base_url('login'));
+    }
+    if($this->session->userdata('role')!=2){
+      redirect(redirect($_SERVER['HTTP_REFERER']));
+    }
   }
 
   function index()

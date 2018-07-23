@@ -31,7 +31,7 @@
                   </div>
                   <div class="col-md-4 col-md-offset-2 col-sm-6 col-xs-8 phl0">
                      <div class="header_author">
-                        <a href="#">HOME</a>
+                        <a href="<?php echo base_url() ?>">HOME</a>
                      </div>
                      <div class="header_ticket">
 
@@ -1055,7 +1055,7 @@
             <div class="row order-content">
               <?php if($this->session->userdata('status')!='login'){?>
                 <div class="col-md-12">
-                  Anda Belum Melakukan Login, Silahkan Login Terlebih Dahulu <a href="<?php echo base_url();?>login">LOGIN</a>
+                  Anda Belum Melakukan Login, Silahkan Login Terlebih Dahulu <a href="<?php echo base_url();?>login">LOGIN</a>,Atau lakukan pendaftaran disini <a href="<?php echo base_url();?>register">DAFTAR</a>
                 </div>
              <?php } else{ ?>
                <div class="col-sm-8 col-xs-12 seat_content ph0">
