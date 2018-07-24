@@ -12,7 +12,7 @@ class Front extends MY_Controller{
 
   function index()
   {
-    $datafilm=$this->Film_model->get_all();//panggil ke modell
+    $datafilm=$this->Film_model->getJudulFilm();//panggil ke modell
     $datafilmcoming=$this->Film_model->get_film_comingsoon();
     $data = array(
       'datafilm' => $datafilm,

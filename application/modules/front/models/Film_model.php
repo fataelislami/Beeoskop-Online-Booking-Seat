@@ -28,6 +28,15 @@ class Film_model extends CI_Model
       return $this->db->query($sql)->result();
     }
 
+    function getJudulFilm(){//ambil film yang didalam rentang waktu tanggal selesai dengan tanggal mulai
+      $sql="SELECT distinct `jadwal`.`id_film`,`film`.`judul_film`,`film`.`tanggal_selesai`,`film`.`tanggal_mulai`,DATEDIFF(`film`.`tanggal_selesai`,`film`.`tanggal_mulai`) as Hari,DATEDIFF(`film`.`tanggal_selesai`,NOW()) as DurasiHari,`film`.`url_gambar` FROM `jadwal`
+      INNER JOIN `studio` ON `jadwal`.`id_studio`=`studio`.`id_studio`
+      INNER JOIN `film` ON `jadwal`.`id_film`=`film`.`id_film`
+      INNER JOIN `jam_tayang` ON `jadwal`.`id_jam_tayang`=`jam_tayang`.`id_jam_tayang`
+      WHERE DATEDIFF(`film`.`tanggal_selesai`,NOW()) >0";
+      return $this->db->query($sql)->result();
+    }
+
     // get data by id
     function get_by_id($id)
     {

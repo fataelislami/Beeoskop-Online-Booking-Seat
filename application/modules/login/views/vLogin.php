@@ -59,10 +59,9 @@ echo "<script>alert('$flashMessage')</script>";
         <div class="form-group">
           <div class="col-md-12">
             <div class="checkbox checkbox-primary pull-left p-t-0">
-              <input id="checkbox-signup" type="checkbox">
-              <label for="checkbox-signup"> Remember me </label>
             </div>
-            <a href="javascript:void(0)" id="to-recover" class="text-dark pull-right"><i class="fa fa-lock m-r-5"></i> Forgot pwd?</a> </div>
+            <a href="<?php echo base_url() ?>register" id="to-recover" class="text-dark pull-left"><i class="fa fa-book m-r-5"></i> Daftar</a>
+            <a href="javascript:void(0)" id="to-recover" class="text-dark pull-right"><i class="fa fa-lock m-r-5"></i> Lupa Password?</a> </div>
         </div>
         <div class="form-group text-center m-t-20">
           <div class="col-xs-12">
@@ -70,16 +69,16 @@ echo "<script>alert('$flashMessage')</script>";
           </div>
         </div>
       </form>
-      <form class="form-horizontal" id="recoverform" action="index.html">
+      <form class="form-horizontal" method="post" id="recoverform" action="<?php echo base_url()?>login/reset">
         <div class="form-group ">
           <div class="col-xs-12">
-            <h3>Recover Password</h3>
-            <p class="text-muted">Enter your Email and instructions will be sent to you! </p>
+            <h3>Kembalikan Password</h3>
+            <p class="text-muted">Masukan Email Anda! </p>
           </div>
         </div>
         <div class="form-group ">
           <div class="col-xs-12">
-            <input class="form-control" type="text" required="" placeholder="Email">
+            <input class="form-control" type="text" name="email" required="" placeholder="Email">
           </div>
         </div>
         <div class="form-group text-center m-t-20">
