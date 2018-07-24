@@ -13,12 +13,31 @@ class Front extends MY_Controller{
   function index()
   {
     $datafilm=$this->Film_model->get_all();//panggil ke modell
-    $data = array('datafilm' => $datafilm, );
+    $datafilmcoming=$this->Film_model->get_film_comingsoon();
+    $data = array(
+      'datafilm' => $datafilm,
+      'datafilmcoming' => $datafilmcoming);
     $this->load->view('Fullpage',$data);
   }
 
   function profile(){
     echo "ini homepage";
+  }
+
+  function movies()
+  {
+    $this->load->view('Movies');
+  }
+
+  function details($id){
+    $datafilm=$this->Film_model->get_by_id($id);
+    $datasemuafilm=$this->Film_model->get_all();
+    $data = array(
+      'datafilm' => $datafilm,
+      'datasemuafilm' => $datasemuafilm,
+    );
+    $this->load->view('Details', $data);
+
   }
 
   function transaksi(){

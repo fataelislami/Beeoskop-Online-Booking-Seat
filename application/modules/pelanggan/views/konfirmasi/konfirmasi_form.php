@@ -22,7 +22,7 @@
     </div>
 	  <div class="form-group">
             <label>tanggal_pembayaran</label>
-            <input type="text" name="tanggal_pembayaran" class="form-control" placeholder="">
+            <input type="date" name="tanggal_pembayaran" class="form-control" placeholder="">
     </div>
 	  <div class="form-group">
             <label>bank_asal</label>

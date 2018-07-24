@@ -22,7 +22,7 @@
     </div>
 	  <div class="form-group">
             <label>tanggal_tayang</label>
-            <input type="text" name="tanggal_tayang" class="form-control" value="<?php echo $dataedit->tanggal_tayang?>">
+            <input type="date" name="tanggal_tayang" class="form-control" value="<?php echo $dataedit->tanggal_tayang?>">
     </div>
 	  <div class="form-group">
             <label>username</label>
@@ -32,7 +32,7 @@
             <label>date_create</label>
             <input type="text" name="date_create" class="form-control" value="<?php echo $dataedit->date_create?>">
     </div>
-	
+
                 <div class="form-group">
                   <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
                 </div>

@@ -22,13 +22,19 @@ class Film_model extends CI_Model
         return $this->db->get($this->table)->result();
     }
 
+    function get_film_comingsoon()
+    {
+      $sql="SELECT * FROM `film` where datediff(`tanggal_mulai`,NOW()) > 0";
+      return $this->db->query($sql)->result();
+    }
+
     // get data by id
     function get_by_id($id)
     {
         $this->db->where($this->id, $id);
         return $this->db->get($this->table)->row();
     }
-    
+
     // get total rows
     function total_rows($q = NULL) {
         $this->db->like('id_film', $q);

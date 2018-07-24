@@ -26,7 +26,7 @@
     </div>
 	  <div class="form-group">
             <label>tanggal_pembayaran</label>
-            <input type="text" name="tanggal_pembayaran" class="form-control" value="<?php echo $dataedit->tanggal_pembayaran?>">
+            <input type="date" name="tanggal_pembayaran" class="form-control" value="<?php echo $dataedit->tanggal_pembayaran?>">
     </div>
 	  <div class="form-group">
             <label>bank_asal</label>

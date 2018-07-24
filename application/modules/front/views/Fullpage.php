@@ -34,10 +34,8 @@
                         <a href="<?php echo base_url() ?>">HOME</a>
                      </div>
                      <div class="header_ticket">
-
-                        <a href="#order" class="order_btn">Order Tiket</a>
+                        <a href="<?php echo base_url() ?>movies">Movies</a>
                      </div>
-                     <a href="javascript:;" id="header-search"></a>
                      <div class="button_container" id="toggle">
                         <span class="top"></span>
                         <span class="middle"></span>
@@ -196,7 +194,7 @@
             </div>
          </div>
          <section class="section-content">
-            <div class="container-fluid pv11 ">
+            <div class="container-fluid pv5 ">
                <div class="row">
                   <div class="col-sm-12">
                      <h3 class="heading text-center">Now playing</h3>
@@ -209,7 +207,7 @@
                                   <div class="movie-image" data-bg-image="<?php echo base_url()?>frontendassets/images/carousel/movie-1.jpg">
                                      <div class="entry-hover">
                                         <div class="entry-actions">
-                                           <a href="https://vimeo.com/28177848" class="btn-trailers video-player">watch trailer</a>
+                                           <a href="<?php echo base_url().'front/details/'.$d->id_film?>">Read More</a>
                                            <a href="#order" class="btn-ticket order_btn ">buy ticket</a>
                                         </div>
                                      </div>
@@ -247,6 +245,60 @@
                      </div>
                   </div>
                </div>
+
+            </div>
+            <div class="container-fluid pv5 ">
+               <div class="row">
+                  <div class="col-sm-12">
+                     <h3 class="heading text-center">Coming Soon  </h3>
+                     <div class="ticket-carousel pvt85">
+                        <div class="swiper-container carousel-container movie-images" data-col="5">
+                           <div class="swiper-wrapper">
+                             <!-- START -->
+                             <?php foreach ($datafilmcoming as $d): ?>
+                               <div class="swiper-slide">
+                                  <div class="movie-image" data-bg-image="<?php echo base_url()?>frontendassets/images/carousel/movie-1.jpg">
+                                     <div class="entry-hover">
+                                        <div class="entry-actions">
+                                           <a href="<?php echo base_url().'front/details/'.$d->id_film?>">Read More</a>
+                                           <a href="#order" class="btn-ticket order_btn ">buy ticket</a>
+                                        </div>
+                                     </div>
+                                     <div class="entry-desc">
+                                        <div class="rating">
+                                           <input name="stars" type="radio">
+                                           <label>☆</label>
+                                           <input name="stars" type="radio">
+                                           <label>☆</label>
+                                           <input name="stars" type="radio">
+                                           <label>☆</label>
+                                           <input name="stars" type="radio">
+                                           <label>☆</label>
+                                           <input name="stars" type="radio">
+                                           <label>☆</label>
+                                        </div>
+                                        <h3 class="entry-title"><?php echo $d->judul_film ?></h3>
+                                        <ul class="entry-date">
+                                           <li>11 :00</li>
+                                           <li>13 :50</li>
+                                           <li>14 :00</li>
+                                           <li>18 :00</li>
+                                        </ul>
+                                     </div>
+                                  </div>
+                               </div>
+                             <?php endforeach; ?>
+
+                              <!-- START -->
+
+                           </div>
+                        </div>
+                        <div class="swiper-button-prev"></div>
+                        <div class="swiper-button-next"></div>
+                     </div>
+                  </div>
+               </div>
+
             </div>
             <div class="section-content pvb0 bg-cover" data-bg-image="<?php echo base_url()?>frontendassets/images/coming-bg.jpg">
                <div class="container pvt80">
@@ -256,10 +308,6 @@
                            <ul class="slides">
                               <li>
                                  <article class="product-item hover-dark">
-                                    <div class="featured-image bg-cover">
-                                       <img src="<?php echo base_url()?>frontendassets/images/carousel/movie-1.jpg" alt="image" />
-                                       <a href="https://vimeo.com/28177848" class="video-player"><i class="fa fa-play"></i></a>
-                                    </div>
                                     <div class="entry-title">
                                        <ul class="subtitle">
                                           <li>Action</li>
@@ -316,10 +364,6 @@
                               </li>
                               <li>
                                  <article class="product-item hover-dark">
-                                    <div class="featured-image bg-cover">
-                                       <img src="<?php echo base_url()?>frontendassets/images/carousel/movie-2.jpg" alt="image" />
-                                       <a href="https://vimeo.com/28177848" class="video-player"><i class="fa fa-play"></i></a>
-                                    </div>
                                     <div class="entry-title">
                                        <ul class="subtitle">
                                           <li>Action</li>
@@ -376,10 +420,6 @@
                               </li>
                               <li>
                                  <article class="product-item hover-dark">
-                                    <div class="featured-image bg-cover">
-                                       <img src="<?php echo base_url()?>frontendassets/images/carousel/movie-3.jpg" alt="image" />
-                                       <a href="https://vimeo.com/28177848" class="video-player"><i class="fa fa-play"></i></a>
-                                    </div>
                                     <div class="entry-title">
                                        <ul class="subtitle">
                                           <li>Action</li>
@@ -436,10 +476,6 @@
                               </li>
                               <li>
                                  <article class="product-item hover-dark">
-                                    <div class="featured-image bg-cover">
-                                       <img src="<?php echo base_url()?>frontendassets/images/carousel/movie-4.jpg" alt="image" />
-                                       <a href="https://vimeo.com/28177848" class="video-player"><i class="fa fa-play"></i></a>
-                                    </div>
                                     <div class="entry-title">
                                        <ul class="subtitle">
                                           <li>Action</li>
@@ -496,10 +532,6 @@
                               </li>
                               <li>
                                  <article class="product-item hover-dark">
-                                    <div class="featured-image bg-cover">
-                                       <img src="<?php echo base_url()?>frontendassets/images/carousel/movie-5.jpg" alt="image" />
-                                       <a href="https://vimeo.com/28177848" class="video-player"><i class="fa fa-play"></i></a>
-                                    </div>
                                     <div class="entry-title">
                                        <ul class="subtitle">
                                           <li>Action</li>
@@ -556,10 +588,6 @@
                               </li>
                               <li>
                                  <article class="product-item hover-dark">
-                                    <div class="featured-image bg-cover">
-                                       <img src="<?php echo base_url()?>frontendassets/images/carousel/movie-6.jpg" alt="image" />
-                                       <a href="https://vimeo.com/28177848" class="video-player"><i class="fa fa-play"></i></a>
-                                    </div>
                                     <div class="entry-title">
                                        <ul class="subtitle">
                                           <li>Action</li>
@@ -618,154 +646,6 @@
                         </div>
                      </div>
                   </div>
-                  <div id="carousel_coming" class="flexslider">
-                     <ul class="slides">
-                        <li class="thumb_item bg-cover">
-                           <div class="movie-image">
-                              <a href="#" class="btn fill">Selected</a>
-                              <img src="<?php echo base_url()?>frontendassets/images/carousel/movie-1.jpg" class="wpc_img" alt="image"/>
-                              <div class="entry-desc">
-                                 <div class="rating">
-                                    <input name="stars" type="radio">
-                                    <label>☆</label>
-                                    <input name="stars" type="radio">
-                                    <label>☆</label>
-                                    <input name="stars" type="radio">
-                                    <label>☆</label>
-                                    <input name="stars" type="radio">
-                                    <label>☆</label>
-                                    <input name="stars" type="radio">
-                                    <label>☆</label>
-                                 </div>
-                                 <h3 class="entry-title">The Mountian</h3>
-                                 <ul class="entry-date">
-                                    <li>5 May 2017</li>
-                                 </ul>
-                              </div>
-                           </div>
-                        </li>
-                        <li class="thumb_item bg-cover">
-                           <div class="movie-image">
-                              <a href="#" class="btn fill">Selected</a>
-                              <img src="<?php echo base_url()?>frontendassets/images/carousel/movie-2.jpg" class="wpc_img" alt="image"/>
-                              <div class="entry-desc">
-                                 <div class="rating">
-                                    <input name="stars" type="radio">
-                                    <label>☆</label>
-                                    <input name="stars" type="radio">
-                                    <label>☆</label>
-                                    <input name="stars" type="radio">
-                                    <label>☆</label>
-                                    <input name="stars" type="radio">
-                                    <label>☆</label>
-                                    <input name="stars" type="radio">
-                                    <label>☆</label>
-                                 </div>
-                                 <h3 class="entry-title">The Mountian</h3>
-                                 <ul class="entry-date">
-                                    <li>5 May 2017</li>
-                                 </ul>
-                              </div>
-                           </div>
-                        </li>
-                        <li class="thumb_item bg-cover">
-                           <div class="movie-image">
-                              <a href="#" class="btn fill">Selected</a>
-                              <img src="<?php echo base_url()?>frontendassets/images/carousel/movie-3.jpg" class="wpc_img" alt="image"/>
-                              <div class="entry-desc">
-                                 <div class="rating">
-                                    <input name="stars" type="radio">
-                                    <label>☆</label>
-                                    <input name="stars" type="radio">
-                                    <label>☆</label>
-                                    <input name="stars" type="radio">
-                                    <label>☆</label>
-                                    <input name="stars" type="radio">
-                                    <label>☆</label>
-                                    <input name="stars" type="radio">
-                                    <label>☆</label>
-                                 </div>
-                                 <h3 class="entry-title">The Mountian</h3>
-                                 <ul class="entry-date">
-                                    <li>5 May 2017</li>
-                                 </ul>
-                              </div>
-                           </div>
-                        </li>
-                        <li class="thumb_item bg-cover">
-                           <div class="movie-image">
-                              <a href="#" class="btn fill">Selected</a>
-                              <img src="<?php echo base_url()?>frontendassets/images/carousel/movie-4.jpg" class="wpc_img" alt="image"/>
-                              <div class="entry-desc">
-                                 <div class="rating">
-                                    <input name="stars" type="radio">
-                                    <label>☆</label>
-                                    <input name="stars" type="radio">
-                                    <label>☆</label>
-                                    <input name="stars" type="radio">
-                                    <label>☆</label>
-                                    <input name="stars" type="radio">
-                                    <label>☆</label>
-                                    <input name="stars" type="radio">
-                                    <label>☆</label>
-                                 </div>
-                                 <h3 class="entry-title">The Mountian</h3>
-                                 <ul class="entry-date">
-                                    <li>5 May 2017</li>
-                                 </ul>
-                              </div>
-                           </div>
-                        </li>
-                        <li class="thumb_item bg-cover">
-                           <div class="movie-image">
-                              <a href="#" class="btn fill">Selected</a>
-                              <img src="<?php echo base_url()?>frontendassets/images/carousel/movie-5.jpg" class="wpc_img" alt="image"/>
-                              <div class="entry-desc">
-                                 <div class="rating">
-                                    <input name="stars" type="radio">
-                                    <label>☆</label>
-                                    <input name="stars" type="radio">
-                                    <label>☆</label>
-                                    <input name="stars" type="radio">
-                                    <label>☆</label>
-                                    <input name="stars" type="radio">
-                                    <label>☆</label>
-                                    <input name="stars" type="radio">
-                                    <label>☆</label>
-                                 </div>
-                                 <h3 class="entry-title">The Mountian</h3>
-                                 <ul class="entry-date">
-                                    <li>5 May 2017</li>
-                                 </ul>
-                              </div>
-                           </div>
-                        </li>
-                        <li class="thumb_item bg-cover">
-                           <div class="movie-image">
-                              <a href="#" class="btn fill">Selected</a>
-                              <img src="<?php echo base_url()?>frontendassets/images/carousel/movie-6.jpg" class="wpc_img" alt="image"/>
-                              <div class="entry-desc">
-                                 <div class="rating">
-                                    <input name="stars" type="radio">
-                                    <label>☆</label>
-                                    <input name="stars" type="radio">
-                                    <label>☆</label>
-                                    <input name="stars" type="radio">
-                                    <label>☆</label>
-                                    <input name="stars" type="radio">
-                                    <label>☆</label>
-                                    <input name="stars" type="radio">
-                                    <label>☆</label>
-                                 </div>
-                                 <h3 class="entry-title">The Mountian</h3>
-                                 <ul class="entry-date">
-                                    <li>5 May 2017</li>
-                                 </ul>
-                              </div>
-                           </div>
-                        </li>
-                     </ul>
-                  </div>
                </div>
             </div>
             <div class="section-content service pvb0">
@@ -805,171 +685,6 @@
                   </div>
                </div>
             </div>
-            <div class="fullscreen-section bg-black pvb0">
-               <div class="container wpc-boxoffice pv8">
-                  <div class="row">
-                     <div class="col-sm-7 col-xs-12">
-                        <h3>box office</h3>
-                        <ul class="wpc-box-list">
-                           <li class="wpc-box-item" >
-                              <ol>
-                                 <li class="bx-item-t"><img src="<?php echo base_url()?>frontendassets/images/boxoffice/thumb-1.jpg" alt="thumb"></li>
-                                 <li class="bx-item-c">1</li>
-                                 <li class="bx-item-title">
-                                    <h4>X-Men: Apocalypse</h4>
-                                    <span>Action, thriller</span>
-                                 </li>
-                                 <li class="bx-item-d">1 week</li>
-                                 <li class="bx-item-m">1.1m</li>
-                              </ol>
-                           </li>
-                           <li class="wpc-box-item" >
-                              <ol>
-                                 <li class="bx-item-t"><img src="<?php echo base_url()?>frontendassets/images/boxoffice/thumb-2.jpg" alt="thumb"></li>
-                                 <li class="bx-item-c">2</li>
-                                 <li class="bx-item-title">
-                                    <h4>Warcraft</h4>
-                                    <span>Action, thriller</span>
-                                 </li>
-                                 <li class="bx-item-d">2 week</li>
-                                 <li class="bx-item-m">1.2m</li>
-                              </ol>
-                           </li>
-                           <li class="wpc-box-item" >
-                              <ol>
-                                 <li class="bx-item-t"><img src="<?php echo base_url()?>frontendassets/images/boxoffice/thumb-3.jpg" alt="thumb"></li>
-                                 <li class="bx-item-c">3</li>
-                                 <li class="bx-item-title">
-                                    <h4>Hobbit: The battle</h4>
-                                    <span>Action, thriller</span>
-                                 </li>
-                                 <li class="bx-item-d">3 week</li>
-                                 <li class="bx-item-m">1.3m</li>
-                              </ol>
-                           </li>
-                           <li class="wpc-box-item" >
-                              <ol>
-                                 <li class="bx-item-t"><img src="<?php echo base_url()?>frontendassets/images/boxoffice/thumb-4.jpg" alt="thumb"></li>
-                                 <li class="bx-item-c">4</li>
-                                 <li class="bx-item-title">
-                                    <h4>James Bond: Spectre</h4>
-                                    <span>Action, thriller</span>
-                                 </li>
-                                 <li class="bx-item-d">4 week</li>
-                                 <li class="bx-item-m">1.4m</li>
-                              </ol>
-                           </li>
-                           <li class="wpc-box-item" >
-                              <ol>
-                                 <li class="bx-item-t"><img src="<?php echo base_url()?>frontendassets/images/boxoffice/thumb-5.jpg" alt="thumb"></li>
-                                 <li class="bx-item-c">5</li>
-                                 <li class="bx-item-title">
-                                    <h4>London has fallen</h4>
-                                    <span>Action, thriller</span>
-                                 </li>
-                                 <li class="bx-item-d">5 week</li>
-                                 <li class="bx-item-m">1.5m</li>
-                              </ol>
-                           </li>
-                        </ul>
-                     </div>
-                     <div class="col-sm-5 col-xs-12 ">
-                        <h3>testimonials</h3>
-                        <div class="wpc-testimonails">
-                           <div class="swiper-container carousel-container">
-                              <div class="swiper-wrapper">
-                                 <div class="swiper-slide">
-                                    <div class="testimonial">
-                                       <img src="<?php echo base_url()?>frontendassets/images/author.png" alt="testimonials author">
-                                       <div class="entry-meta">
-                                          <h4>Shela Mathews</h4>
-                                       </div>
-                                       <p>
-                                          Enthusiastically monetize plug-and-play scenarios through quality manufactured products. Monotonectally streamline standardized portals after proactive innovation. Energistically promote market positioning.
-                                       </p>
-                                    </div>
-                                 </div>
-                                 <div class="swiper-slide">
-                                    <div class="testimonial">
-                                       <img src="<?php echo base_url()?>frontendassets/images/author.png" alt="testimonials author">
-                                       <div class="entry-meta">
-                                          <h4>Shela Mathews</h4>
-                                       </div>
-                                       <p>
-                                          Enthusiastically monetize plug-and-play scenarios through quality manufactured products. Monotonectally streamline standardized portals after proactive innovation. Energistically promote market positioning.
-                                       </p>
-                                    </div>
-                                 </div>
-                                 <div class="swiper-slide">
-                                    <div class="testimonial">
-                                       <img src="<?php echo base_url()?>frontendassets/images/author.png" alt="testimonials author">
-                                       <div class="entry-meta">
-                                          <h4>Shela Mathews</h4>
-                                       </div>
-                                       <p>
-                                          Enthusiastically monetize plug-and-play scenarios through quality manufactured products. Monotonectally streamline standardized portals after proactive innovation. Energistically promote market positioning.
-                                       </p>
-                                    </div>
-                                 </div>
-                                 <div class="swiper-slide">
-                                    <div class="testimonial">
-                                       <img src="<?php echo base_url()?>frontendassets/images/author.png" alt="testimonials author">
-                                       <div class="entry-meta">
-                                          <h4>Shela Mathews</h4>
-                                       </div>
-                                       <p>
-                                          Enthusiastically monetize plug-and-play scenarios through quality manufactured products. Monotonectally streamline standardized portals after proactive innovation. Energistically promote market positioning.
-                                       </p>
-                                    </div>
-                                 </div>
-                                 <div class="swiper-slide">
-                                    <div class="testimonial">
-                                       <img src="<?php echo base_url()?>frontendassets/images/author.png" alt="testimonials author">
-                                       <div class="entry-meta">
-                                          <h4>Shela Mathews</h4>
-                                       </div>
-                                       <p>
-                                          Enthusiastically monetize plug-and-play scenarios through quality manufactured products. Monotonectally streamline standardized portals after proactive innovation. Energistically promote market positioning.
-                                       </p>
-                                    </div>
-                                 </div>
-                              </div>
-                              <div class="swiper-pagination"></div>
-                           </div>
-                        </div>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <div class="fullscreen-section">
-               <div id="tt-google-map" class="tt-google-map" data-lat="47.919311" data-lng="106.917643" data-zoom="16" data-saturation="-100" data-color="#333" data-marker="images/marker.png">
-                  <div id="gmap_content">
-                     <div class="gmap-item">
-                        <label class="label-title">Keep in Touch</label>
-                     </div>
-                     <div class="gmap-item">
-                        <label>
-                        <i class="fa fa-map-marker"></i>
-                        </label>
-                        <span>Address : 86 New Design Street, Melbourne 105</span>
-                     </div>
-                     <div class="gmap-item">
-                        <label>
-                        <i class="fa fa-phone"></i>
-                        </label>
-                        <span>Phone: (01) 200 123 544</span>
-                     </div>
-                     <div class="gmap-item">
-                        <label>
-                        <i class="fa fa-envelope"></i>
-                        </label>
-                        <span>Email: info@example.com</span>
-                     </div>
-                  </div>
-               </div>
-            </div>
-            <script type="text/javascript" src="<?php echo base_url()?>frontendassets/js/google-maps.js"></script>
-            <script async defer src="https://maps.googleapis.com/maps/api/js?callback=initMap"></script>
          </section>
          <footer id="footer">
             <div class="container footer-container">
@@ -979,18 +694,9 @@
                         <h5 class="widget-title">Menu</h5>
                         <ul class="menu">
                            <li><a href="#">Home</a></li>
-                           <li><a href="#">Coming soon</a></li>
-                           <li><a href="#">Order</a></li>
-                           <li><a href="#">Terms of service</a></li>
-                           <li><a href="#">Pricing</a></li>
+                           <li><a href="#">Movies</a></li>
+                           <li><a href="#">Order Tiket</a></li>
                         </ul>
-                     </div>
-                     <div class="widget">
-                        <div class="social-links">
-                           <a href="javascript:;"><i class="fa fa-facebook"></i></a>
-                           <a href="javascript:;"><i class="fa fa-twitter"></i></a>
-                           <a href="javascript:;"><i class="fa fa-google-plus"></i></a>
-                        </div>
                      </div>
                   </div>
                   <div class="col-md-3 col-sm-6">
@@ -1007,26 +713,6 @@
                      </div>
                   </div>
                   <div class="col-md-1"></div>
-                  <div class="col-md-6">
-                     <div class="widget">
-                        <h5 class="widget-title">Leave a message</h5>
-                        <form class="contact_form transparent">
-                           <div class="row">
-                              <div class="col-sm-12">
-                                 <input type="text" class="inputValidation" name="name" placeholder="Name *">
-                              </div>
-                              <div class="col-sm-12">
-                                 <input type="text" class="inputValidation" name="email" placeholder="Email *">
-                              </div>
-                              <div class="col-sm-12 ">
-                                 <textarea class="inputValidation" placeholder="Message *"></textarea>
-                                 <button type="submit" class="button fill rectangle">Send to us</button>
-                              </div>
-                           </div>
-                        </form>
-                        <div class="errorMessage"></div>
-                     </div>
-                  </div>
                </div>
             </div>
             <div class="sub-footer">

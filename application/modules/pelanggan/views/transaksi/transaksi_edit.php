@@ -10,7 +10,7 @@
             </div>
 	  <div class="form-group">
             <label>tanggal_bayar</label>
-            <input type="text" name="tanggal_bayar" class="form-control" value="<?php echo $dataedit->tanggal_bayar?>">
+            <input type="date" name="tanggal_bayar" class="form-control" value="<?php echo $dataedit->tanggal_bayar?>">
     </div>
 	  <div class="form-group">
             <label>total</label>
@@ -28,7 +28,7 @@
             <label>username</label>
             <input type="text" name="username" class="form-control" value="<?php echo $dataedit->username?>">
     </div>
-	
+
                 <div class="form-group">
                   <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
                 </div>

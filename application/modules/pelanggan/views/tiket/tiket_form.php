@@ -18,7 +18,7 @@
     </div>
 	  <div class="form-group">
             <label>tanggal_tayang</label>
-            <input type="text" name="tanggal_tayang" class="form-control" placeholder="">
+            <input type="date" name="tanggal_tayang" class="form-control" placeholder="">
     </div>
 	  <div class="form-group">
             <label>username</label>
@@ -28,8 +28,8 @@
             <label>date_create</label>
             <input type="text" name="date_create" class="form-control" placeholder="">
     </div>
-	    <input type="hidden" name="id_tiket" /> 
-	
+	    <input type="hidden" name="id_tiket" />
+
                 <div class="form-group">
                   <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
                 </div>

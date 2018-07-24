@@ -6,7 +6,7 @@
             <form class="form-material m-t-40" method="post" action="<?php echo base_url().$action ?>">
 	  <div class="form-group">
             <label>tanggal_bayar</label>
-            <input type="text" name="tanggal_bayar" class="form-control" placeholder="">
+            <input type="date" name="tanggal_bayar" class="form-control" placeholder="">
     </div>
 	  <div class="form-group">
             <label>total</label>
@@ -24,8 +24,8 @@
             <label>username</label>
             <input type="text" name="username" class="form-control" placeholder="">
     </div>
-	    <input type="hidden" name="id_transaksi" /> 
-	
+	    <input type="hidden" name="id_transaksi" />
+
                 <div class="form-group">
                   <button type="submit" class="btn btn-success waves-effect waves-light m-r-10">Submit</button>
                 </div>
