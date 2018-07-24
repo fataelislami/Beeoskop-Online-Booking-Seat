@@ -34,31 +34,24 @@
                         <a href="<?php echo base_url() ?>">HOME</a>
                      </div>
                      <div class="header_ticket">
+                        <a href="<?php echo base_url() ?>movies" class="">Movies</a>
+                     </div>
+                     <?php if($this->session->userdata('status')!='login'){?>
+                       <div class="header_ticket">
+                          <a href="<?php echo base_url() ?>login" class="">Masuk</a>
+                       </div>
+                     <?php }else{ ?>
+                       <div class="header_ticket">
+                          <a href="<?php echo base_url() ?>pelanggan" class=""><?php echo $this->session->userdata('username'); ?></a>
+                       </div>
+                     <?php } ?>
 
-                        <a href="<?php echo base_url() ?>movies">Movies</a>
-                     </div>
-                     <a href="javascript:;" id="header-search"></a>
-                     <div class="button_container" id="toggle">
-                        <span class="top"></span>
-                        <span class="middle"></span>
-                        <span class="bottom"></span>
-                     </div>
-                     <div class="overlay" id="overlay">
-                        <a href="javascript:;" class="close-window"></a>
-                        <nav class="overlay-menu">
-                           <ul >
-                              <li ><a href="./">Home</a></li>
-                              <li><a href="blog.html">Blog</a></li>
-                              <li><a href="single.html">Single</a></li>
-                              <li><a href="#order" class="order_btn">Order</a></li>
-                           </ul>
-                        </nav>
-                     </div>
+
                   </div>
                </div>
             </div>
          </header>
-<section class="section-content pv12 bg-cover" data-bg-image="<?php echo base_url()?>frontendassets/images/coming-bg.jpg">
+<section class="section-content pv12 bg-cover" data-bg-image="<?php echo base_url()?>assets/bege.jpg">
   <div class="container">
     <div class="row">
       <div class="col-sm-12 page-title mt5 mb5">
@@ -71,20 +64,7 @@
     </div>
     <div class="row">
       <div class="col-sm-12 ph0">
-        <article class="blog-item featured" >
-          <div class="col-sm-4 col-xs-12">
-            <div class="post-image" data-bg-image="<?php echo base_url()?>frontendassets/images/blog/post-1.jpg"></div>
-          </div>
-          <div class="col-sm-8 ml-r-15">
-            <div class="overlay bg-cover" data-bg-image="<?php echo base_url()?>frontendassets/images/blog/post-1.jpg"></div>
-            <div class="post-content">
 
-              <h2 class="entry-title"><a href="single.html">Judul Film</i></a></h2>
-              <p class="entry-excepts">Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis</p>
-              <a href="single.html" class="btn more mt2"> Read more</a>
-            </div>
-          </div>
-        </article>
       </div>
     </div>
   </div>
@@ -92,47 +72,25 @@
     <div class="row">
       <div class="col-sm-12">
         <div class="blog-container">
-          <article class="blog-item">
-            <div class="col-sm-4 col-xs-12 ">
-              <div class="post-image" data-bg-image="<?php echo base_url()?>frontendassets/images/blog/post-2.jpg"></div>
-            </div>
-            <div class="col-sm-8 ml-r-15">
-            <div class="overlay bg-cover" data-bg-image="<?php echo base_url()?>frontendassets/images/blog/post-2.jpg"> </div>
-              <div class="post-content">
-                <h2 class="entry-title"><a href="javascript:;">Judul Film</a></h2>
-                <p class="entry-excepts">Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis</p>
-                <a href="single.html" class="btn more mt1"> Read more</a>
+          <?php foreach ($datafilm as $d): ?>
+            <article class="blog-item">
+              <div class="col-sm-4 col-xs-12 ">
+                <div class="post-image" data-bg-image="<?php echo base_url()?>assets/film-image/<?php echo $d->url_gambar ?>"></div>
               </div>
-            </div>
-          </article>
-          <article class="blog-item mt35">
-            <div class="col-sm-4 col-xs-12">
-              <div class="post-image" data-bg-image="<?php echo base_url()?>frontendassets/images/blog/post-3.jpg"></div>
-            </div>
-            <div class="col-sm-8 ml-r-15">
-              <div class="overlay bg-cover" data-bg-image="<?php echo base_url()?>frontendassets/images/blog/post-3.jpg"> </div>
-              <div class="post-content">
-                <h2 class="entry-title"><a href="javascript:;">Judul Film</a></h2>
-                <p class="entry-excepts">Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis</p>
-                <a href="single.html" class="btn more mt1"> Read more</a>
+              <div class="col-sm-8 ml-r-15">
+              <div class="overlay bg-cover" data-bg-image="<?php echo base_url()?>frontendassets/images/blog/post-2.jpg"> </div>
+                <div class="post-content">
+                  <h2 class="entry-title"><a href="javascript:;"><?php echo $d->judul_film ?></a></h2>
+                  <p class="entry-excepts"><?php echo substr($d->sinopsis,0,1000) ?></p>
+                </div>
               </div>
-            </div>
-          </article>
-          <article class="blog-item mt35" >
-            <div class="col-sm-4 col-xs-12">
-              <div class="post-image" data-bg-image="<?php echo base_url()?>frontendassets/images/blog/post-4.jpg"></div>
-            </div>
-            <div class="col-sm-8 ml-r-15">
-              <div class="overlay bg-cover" data-bg-image="<?php echo base_url()?>frontendassets/images/blog/post-1.jpg"> </div>
-              <div class="post-content">
-                <h2 class="entry-title"><a href="javascript:;">Judul Film</h2>
-                <p class="entry-excepts">Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis Sinopsis</p>
-                <a href="single.html" class="btn more mt1"> Read more</a>
-              </div>
-            </div>
-          </article>
+            </article>
+          <?php endforeach; ?>
+
+
+
         </div>
-        <div class="post-navigation mv3">
+        <!-- <div class="post-navigation mv3">
           <ul>
             <li><a href="javascript:;">1</a></li>
             <li><a href="javascript:;">2</a></li>
@@ -140,7 +98,7 @@
             <li><a href="javascript:;">4</a></li>
             <li><a href="javascript:;" class="arrow">&raquo;</a></li>
           </ul>
-        </div>
+        </div> -->
       </div>
 
   </div>

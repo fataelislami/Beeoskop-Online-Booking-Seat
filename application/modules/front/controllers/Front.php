@@ -26,7 +26,10 @@ class Front extends MY_Controller{
 
   function movies()
   {
-    $this->load->view('Movies');
+    $datafilm=$this->Film_model->get_all();
+    $data = array(
+      'datafilm' => $datafilm);
+    $this->load->view('Movies',$data);
   }
 
   function details($id){
