@@ -72,7 +72,7 @@ class Transaksi extends MY_Controller
 	    );
 
             $this->Transaksi_model->insert($data);
-            $this->session->set_flashdata('message', 'Create Record Success');
+            $this->session->set_flashdata('flashMessage', 'Data telah berhasil ditambahkan');
             redirect(site_url('admin/transaksi'));
         }
     }
@@ -106,7 +106,7 @@ class Transaksi extends MY_Controller
 
         if ($row) {
             $this->Transaksi_model->delete($id);
-            $this->session->set_flashdata('message', 'Delete Record Success');
+            $this->session->set_flashdata('flashMessage', 'Data telah berhasil dihapus');
             redirect(site_url('admin/transaksi'));
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');

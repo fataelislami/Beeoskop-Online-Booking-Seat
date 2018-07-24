@@ -81,7 +81,7 @@
               <div class="overlay bg-cover" data-bg-image="<?php echo base_url()?>frontendassets/images/blog/post-2.jpg"> </div>
                 <div class="post-content">
                   <h2 class="entry-title"><a href="javascript:;"><?php echo $d->judul_film ?></a></h2>
-                  <p class="entry-excepts"><?php echo substr($d->sinopsis,0,1000) ?></p>
+                  <p class="entry-excepts"><?php echo substr($d->sinopsis,0,500) ?></p>
                 </div>
               </div>
             </article>

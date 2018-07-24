@@ -89,7 +89,7 @@ class Konfirmasi extends MY_Controller
 	    );
 
             $this->Konfirmasi_model->insert($data);
-            $this->session->set_flashdata('message', 'Create Record Success');
+            $this->session->set_flashdata('flashMessage', 'Data telah berhasil ditambahkan');
             redirect(site_url('admin/konfirmasi'));
         }
     }
@@ -117,7 +117,7 @@ class Konfirmasi extends MY_Controller
 	    );
 
             $this->Konfirmasi_model->update($this->input->post('id_konfirmasi', TRUE), $data);
-            $this->session->set_flashdata('message', 'Update Record Success');
+            $this->session->set_flashdata('flashMessage', 'Data telah berhasil diupdate');
             redirect(site_url('admin/konfirmasi'));
         }
     }
@@ -128,7 +128,7 @@ class Konfirmasi extends MY_Controller
 
         if ($row) {
             $this->Konfirmasi_model->delete($id);
-            $this->session->set_flashdata('message', 'Delete Record Success');
+            $this->session->set_flashdata('flashMessage', 'Data telah berhasil dihapus');
             redirect(site_url('admin/konfirmasi'));
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');

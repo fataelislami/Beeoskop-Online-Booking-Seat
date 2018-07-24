@@ -28,6 +28,11 @@ class Tiket_model extends CI_Model
       return $this->db->list_fields($this->table);
     }
 
+    function getJoin($username){
+      $sql="SELECT * FROM `tiket` JOIN `jadwal` USING (`id_jadwal`) JOIN `kursi` USING(`id_kursi`) JOIN `FILM` USING(`id_film`) JOIN `STUDIO` USING (`id_studio`) JOIN `jam_tayang` USING (`id_jam_tayang`) WHERE `username`='$username'";
+      return $this->db->query($sql)->result();
+    }
+
     // get data by id
     function get_by_id($id)
     {

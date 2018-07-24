@@ -29,7 +29,7 @@ echo "<script>alert('$flashMessage')</script>";
               <div class="row">
                   <div class="col-md-6">
                       <h4 class="card-title">Data Transaksi</h4>
-                      <h6 class="card-subtitle">Export data to Copy, CSV, Excel, PDF & Print</h6>
+                      <h6 class="card-subtitle">Pengelolaan Data Transaksi</h6>
                   </div>
                   <div class="col-md-6 text-right">
       	    </div>

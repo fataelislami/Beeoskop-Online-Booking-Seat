@@ -75,7 +75,7 @@ class Kursi extends MY_Controller
 	    );
 
             $this->Kursi_model->insert($data);
-            $this->session->set_flashdata('message', 'Create Record Success');
+            $this->session->set_flashdata('flashMessage', 'Data telah berhasil ditambahkan');
             redirect(site_url('admin/kursi'));
         }
     }
@@ -95,7 +95,7 @@ class Kursi extends MY_Controller
 	    );
 
             $this->Kursi_model->update($this->input->post('id_kursi', TRUE), $data);
-            $this->session->set_flashdata('message', 'Update Record Success');
+            $this->session->set_flashdata('flashMessage', 'Data telah berhasil diupdate');
             redirect(site_url('admin/kursi'));
         }
     }
@@ -106,7 +106,7 @@ class Kursi extends MY_Controller
 
         if ($row) {
             $this->Kursi_model->delete($id);
-            $this->session->set_flashdata('message', 'Delete Record Success');
+            $this->session->set_flashdata('flashMessage', 'Data telah berhasil dihapus');
             redirect(site_url('admin/kursi'));
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');

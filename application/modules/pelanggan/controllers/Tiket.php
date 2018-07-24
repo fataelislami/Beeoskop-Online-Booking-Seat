@@ -21,8 +21,7 @@ class Tiket extends MY_Controller
     public function index()
     {
 
-      $datatiket=$this->Tiket_model->get_all($this->session->userdata('username'));//panggil ke modell
-      $datafield=$this->Tiket_model->get_field();//panggil ke modell
+      $datatiket=$this->Tiket_model->getJoin($this->session->userdata('username'));//panggil ke modell
 
       $data = array(
         'contain_view' => 'pelanggan/tiket/tiket_list',
@@ -30,7 +29,6 @@ class Tiket extends MY_Controller
         'css'=>'pelanggan/crudassets/css',
         'script'=>'pelanggan/crudassets/script',
         'datatiket'=>$datatiket,
-        'datafield'=>$datafield,
         'module'=>'pelanggan'
        );
       $this->template->load($data);

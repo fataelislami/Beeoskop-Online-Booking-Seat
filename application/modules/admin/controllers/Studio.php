@@ -75,7 +75,7 @@ class Studio extends MY_Controller
 	    );
 
             $this->Studio_model->insert($data);
-            $this->session->set_flashdata('message', 'Create Record Success');
+            $this->session->set_flashdata('flashMessage', 'Data telah berhasil ditambahkan');
             redirect(site_url('admin/studio'));
         }
     }
@@ -95,7 +95,7 @@ class Studio extends MY_Controller
 	    );
 
             $this->Studio_model->update($this->input->post('id_studio', TRUE), $data);
-            $this->session->set_flashdata('message', 'Update Record Success');
+            $this->session->set_flashdata('flashMessage', 'Data telah berhasil diupdate');
             redirect(site_url('admin/studio'));
         }
     }
@@ -106,7 +106,7 @@ class Studio extends MY_Controller
 
         if ($row) {
             $this->Studio_model->delete($id);
-            $this->session->set_flashdata('message', 'Delete Record Success');
+            $this->session->set_flashdata('flashMessage', 'Data telah berhasil dihapus');
             redirect(site_url('admin/studio'));
         } else {
             $this->session->set_flashdata('message', 'Record Not Found');

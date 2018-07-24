@@ -81,7 +81,7 @@ $(document).ready(function() {
 $('#example23').DataTable({
     dom: 'Bfrtip',
     buttons: [
-        ''
+        'copy'
     ]
 });
 </script>

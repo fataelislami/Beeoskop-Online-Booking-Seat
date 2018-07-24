@@ -60,7 +60,7 @@ echo "<script>alert('$flashMessage')</script>";
           <div class="col-md-12">
             <div class="checkbox checkbox-primary pull-left p-t-0">
             </div>
-            <a href="<?php echo base_url() ?>register" id="to-recover" class="text-dark pull-left"><i class="fa fa-book m-r-5"></i> Daftar</a>
+            <a href="<?php echo base_url() ?>register" class="text-dark pull-left"><i class="fa fa-book m-r-5"></i> Daftar</a>
             <a href="javascript:void(0)" id="to-recover" class="text-dark pull-right"><i class="fa fa-lock m-r-5"></i> Lupa Password?</a> </div>
         </div>
         <div class="form-group text-center m-t-20">

@@ -2,7 +2,7 @@
     <ul id="sidebarnav">
         <li class="nav-small-cap">Menu</li>
         <li>
-            <a class="waves-effect waves-dark" href="<?php echo base_url()?>pelanggan"><i class="mdi mdi-gauge"></i><span class="hide-menu">Dashboard</span></a>
+            <a class="waves-effect waves-dark" href="<?php echo base_url()?>pelanggan"><i class="mdi mdi-gauge"></i><span class="hide-menu">Home</span></a>
         </li>
         <li>
             <a class="waves-effect waves-dark" href="<?php echo base_url()?>pelanggan/tiket"><i class="mdi mdi-gauge"></i><span class="hide-menu">Tiket</span></a>

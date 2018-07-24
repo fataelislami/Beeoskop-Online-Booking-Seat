@@ -74,7 +74,7 @@ class Jam_tayang extends MY_Controller
 	    );
 
             $this->Jam_tayang_model->insert($data);
-            $this->session->set_flashdata('message', 'Create Record Success');
+            $this->session->set_flashdata('flashMessage', 'Data telah berhasil ditambahkan');
             redirect(site_url('admin/jam_tayang'));
         }
     }
@@ -93,7 +93,7 @@ class Jam_tayang extends MY_Controller
 	    );
 
             $this->Jam_tayang_model->update($this->input->post('id_jam_tayang', TRUE), $data);
-            $this->session->set_flashdata('message', 'Update Record Success');
+            $this->session->set_flashdata('flashMessage', 'Data telah berhasil diupdate');
             redirect(site_url('admin/jam_tayang'));
         }
     }

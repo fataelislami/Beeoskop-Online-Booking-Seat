@@ -70,7 +70,7 @@ class Film extends MY_Controller{
 
       if ($row) {
           $this->Film_model->delete($id);
-          $this->session->set_flashdata('message', 'Delete Record Success');
+          $this->session->set_flashdata('flashMessage', 'Data telah berhasil dihapus');
           redirect(site_url('admin/film'));
       } else {
           $this->session->set_flashdata('message', 'Record Not Found');
@@ -111,7 +111,7 @@ class Film extends MY_Controller{
               # code...
             }
           }
-          $this->session->set_flashdata('message', 'Create Record Success');
+          $this->session->set_flashdata('flashMessage', 'Data telah berhasil ditambahkan');
           redirect(site_url('admin/film'));
       }
   }
@@ -158,12 +158,12 @@ class Film extends MY_Controller{
             $this->Film_genre->deleteAll($_POST['id_film']);
           }
           //Delete Film Genre Berdasarkan Checkbox
-          $this->session->set_flashdata('message', 'Update Record Success');
+          $this->session->set_flashdata('flashMessage', 'Data telah berhasil diupdate');
           redirect(site_url('admin/film'));
       }
   }
 
-  
+
 
   public function upload_foto(){
   $config['upload_path']          = './assets/film-image';
