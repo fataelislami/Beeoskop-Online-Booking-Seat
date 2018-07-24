@@ -95,12 +95,12 @@
 
                </div>
                <!-- Controls -->
-               <a class="carousel-control left" href="#headerslider" data-slide="prev">
+               <!-- <a class="carousel-control left" href="#headerslider" data-slide="prev">
                <i class="fa fa-angle-left"></i>
                </a>
                <a class="carousel-control right" href="#headerslider" data-slide="next">
                <i class="fa fa-angle-right"></i>
-               </a>
+               </a> -->
             </div>
          </div>
          <section class="section-content">
@@ -117,7 +117,7 @@
                                   <div class="movie-image" data-bg-image="<?php echo base_url()?>assets/film-image/<?php echo $d->url_gambar ?>">
                                      <div class="entry-hover">
                                         <div class="entry-actions">
-                                           <a href="#" class="btn-trailers">Lihat Deskripsi</a>
+                                           <a href="<?php echo base_url(); ?>movies" class="btn-trailers">Lihat Deskripsi</a>
                                            <a href="#order" class="btn-ticket order_btn ">buy ticket</a>
                                         </div>
                                      </div>
@@ -135,12 +135,9 @@
                                            <label>☆</label>
                                         </div>
                                         <h3 class="entry-title"><?php echo $d->judul_film ?></h3>
-                                        <ul class="entry-date">
-                                           <li>11 :00</li>
-                                           <li>13 :50</li>
-                                           <li>14 :00</li>
-                                           <li>18 :00</li>
-                                        </ul>
+                                        <br>
+                                        <br>
+                                        <li></li>
                                      </div>
                                   </div>
                                </div>
@@ -169,7 +166,7 @@
                                  <div class="movie-image" data-bg-image="<?php echo base_url()?>assets/film-image/<?php echo $d->url_gambar ?>">
                                      <div class="entry-hover">
                                         <div class="entry-actions">
-                                           <a href="#" class="btn-trailers video-player">Lihat Deskripsi</a>
+                                           <a href="<?php echo base_url(); ?>movies" class="btn-trailers">Lihat Deskripsi</a>
                                         </div>
                                      </div>
                                      <div class="entry-desc">
@@ -186,12 +183,9 @@
                                            <label>☆</label>
                                         </div>
                                         <h3 class="entry-title"><?php echo $d->judul_film ?></h3>
-                                        <ul class="entry-date">
-                                           <li>11 :00</li>
-                                           <li>13 :50</li>
-                                           <li>14 :00</li>
-                                           <li>18 :00</li>
-                                        </ul>
+                                        <br>
+                                        <br>
+                                        <li></li>
                                      </div>
                                   </div>
                                </div>

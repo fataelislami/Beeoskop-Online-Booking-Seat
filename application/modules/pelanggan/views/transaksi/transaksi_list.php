@@ -2,6 +2,26 @@
   $flashMessage=$this->session->flashdata('flashMessage');
 echo "<script>alert('$flashMessage')</script>";
  } ?>
+ <div class="row">
+     <div class="col-12">
+         <div class="card">
+             <div class="card-body">
+               <div class="row">
+                   <div class="col-md-6">
+                       <h4 class="card-title">Info Pembayaran</h4>
+                       <h6 class="card-subtitle">Segera Lakukan Pembayaran untuk transaksi sesuai total saldo yang telah dibuat</h6>
+                   </div>
+                   <div class="col-md-6 text-right">
+       	    </div>
+               </div>
+               <p>INFO REKENING</p>
+               <p>No Rekening : 021421121</p>
+               <p>Bank : BNI</p>
+               <p>Atas Nama : PT.BIOSKOP SI INDONESIA IF-11</p>
+             </div>
+         </div>
+     </div>
+ </div>
 <div class="row">
     <div class="col-12">
         <div class="card">

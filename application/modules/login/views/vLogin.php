@@ -40,7 +40,7 @@ echo "<script>alert('$flashMessage')</script>";
     <!-- ============================================================== -->
     <!-- Main wrapper - style you can find in pages.scss -->
     <!-- ============================================================== -->
-    <section id="wrapper" class="login-register login-sidebar"  style="background-image:url(assets/images/background/bglogin.jpg);">
+    <section id="wrapper" class="login-register login-sidebar"  style="background-image:url(assets/fixslide.jpg);">
   <div class="login-box card">
     <div class="card-body">
       <form class="form-horizontal form-material" method="post" id="loginform" action="login/auth">
