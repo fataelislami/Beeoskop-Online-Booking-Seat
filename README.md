@@ -1,7 +1,8 @@
 # Beeoskop - Online ticketing
 
-Beeoskop is a website for handle book ticket online and enables user to see movie list in every cinema on their region
+Beeoskop is a website for studios booking seat,provide ticket with online transaction and enables user to see movie list in every cinema on their region
 
+this project especially for my final exam.
 ## Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
